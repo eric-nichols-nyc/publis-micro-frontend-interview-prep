@@ -13,7 +13,7 @@
 | 09 | Production remote URLs | [09-prod-remote-env.md](./09-prod-remote-env.md) | Draft | 01 |
 | 10 | E2E smoke tests | [10-e2e-smoke.md](./10-e2e-smoke.md) | Draft | 01 |
 | 11 | API application | [02-api-application/overview.md](./02-api-application/overview.md) | **In progress** | DB migrate, Neon Auth |
-| 12 | API product catalog | [12-api-product-catalog.md](./12-api-product-catalog.md) | **Approved** | 11 (API), 04, 07 (route gate) |
+| 12 | API product catalog | [12-api-product-catalog.md](./12-api-product-catalog.md) | **Completed** | 11 (API), 04, 07 (route gate) |
 
 Template: [99-template.md](./99-template.md)
 

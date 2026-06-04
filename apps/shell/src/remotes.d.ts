@@ -1,8 +1,8 @@
 declare module "mfe_products/ProductsPage" {
   import type { ComponentType } from "react";
-  import type { RemoteSlotProps } from "@repo/mfe-shared";
+  import type { ProductsRemoteProps } from "@repo/mfe-shared";
 
-  const ProductsPage: ComponentType<RemoteSlotProps>;
+  const ProductsPage: ComponentType<ProductsRemoteProps>;
   export default ProductsPage;
 }
 

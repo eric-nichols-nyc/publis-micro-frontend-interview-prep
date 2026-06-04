@@ -1,6 +1,5 @@
+import type { Product } from "@repo/mfe-shared";
 import { useMemo, useState } from "react";
-import { mockProducts } from "../lib/mock-products";
-import type { Product } from "../types";
 
 function filterByName(products: Product[], query: string): Product[] {
   const normalized = query.trim().toLowerCase();
@@ -12,7 +11,7 @@ function filterByName(products: Product[], query: string): Product[] {
   );
 }
 
-export function useProductSearch(products: Product[] = mockProducts) {
+export function useProductSearch(products: Product[]) {
   const [query, setQuery] = useState("");
   const filteredProducts = useMemo(
     () => filterByName(products, query),

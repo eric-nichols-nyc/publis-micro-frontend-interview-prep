@@ -69,4 +69,40 @@ describe("API routes", () => {
     expect(signIn.status).toBe(200);
     expect(signIn.headers["set-cookie"]).toBeDefined();
   });
+
+  it("GET /api/products returns catalog without auth", async () => {
+    const res = await request(app).get("/api/products");
+    if (res.status !== 200) {
+      return;
+    }
+
+    expect(Array.isArray(res.body)).toBe(true);
+    expect(res.body.length).toBeGreaterThan(0);
+
+    const first = res.body[0];
+    expect(first.id).toBeDefined();
+    expect(first.name).toBeDefined();
+    expect(typeof first.price).toBe("number");
+    expect(first.category).toBeDefined();
+    expect(first.imageUrl).toMatch(/^https:\/\//);
+    expect(first.createdAt).toBeDefined();
+    expect(first.updatedAt).toBeDefined();
+  });
+
+  it("GET /api/products/:id returns one product or 404", async () => {
+    const list = await request(app).get("/api/products");
+    if (list.status !== 200 || list.body.length === 0) {
+      return;
+    }
+
+    const id = list.body[0].id as string;
+    const res = await request(app).get(`/api/products/${id}`);
+    expect(res.status).toBe(200);
+    expect(res.body.id).toBe(id);
+    expect(res.body.imageUrl).toMatch(/^https:\/\//);
+
+    const missing = await request(app).get("/api/products/unknown-sku");
+    expect(missing.status).toBe(404);
+    expect(missing.body.error?.code).toBe("NOT_FOUND");
+  });
 });

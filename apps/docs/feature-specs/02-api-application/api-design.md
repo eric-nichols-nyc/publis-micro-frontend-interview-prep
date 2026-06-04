@@ -240,6 +240,93 @@ As per global error envelope.
 
 ---
 
+## GET /api/products
+
+**Purpose:** List all catalog products (public read).
+
+### Request
+
+- Method: `GET`
+- Path: `/api/products`
+- Auth: **none**
+- Query params: none in v1
+
+### Response — 200 OK
+
+Bare JSON array, sorted by `name` ascending.
+
+```json
+[
+  {
+    "id": "sku_1",
+    "name": "Trail Runner Pack",
+    "price": 89,
+    "category": "Bags",
+    "imageUrl": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=300&fit=crop",
+    "createdAt": "2026-06-04T12:00:00.000Z",
+    "updatedAt": "2026-06-04T12:00:00.000Z"
+  }
+]
+```
+
+### Authorization
+
+- Public — no session required.
+
+---
+
+## GET /api/products/:id
+
+**Purpose:** Fetch a single product by SKU id.
+
+### Request
+
+- Method: `GET`
+- Path: `/api/products/:id`
+- Params: `id` — non-empty string (e.g. `sku_1`)
+- Auth: **none**
+
+### Response — 200 OK
+
+```json
+{
+  "id": "sku_1",
+  "name": "Trail Runner Pack",
+  "price": 89,
+  "category": "Bags",
+  "imageUrl": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=300&fit=crop",
+  "createdAt": "2026-06-04T12:00:00.000Z",
+  "updatedAt": "2026-06-04T12:00:00.000Z"
+}
+```
+
+### Response — 404 Not Found
+
+Unknown product id.
+
+```json
+{
+  "error": {
+    "code": "NOT_FOUND",
+    "message": "Product not found"
+  }
+}
+```
+
+### Validation
+
+| Field | Rule |
+|-------|------|
+| `id` | Required; non-empty string after trim |
+
+Invalid param → `400 VALIDATION_ERROR`.
+
+### Authorization
+
+- Public — no session required.
+
+---
+
 ## Cross-system flows
 
 ### End-to-end: Browser → Shell → API → Neon Auth → Postgres
@@ -341,7 +428,7 @@ Return `429 TOO_MANY_REQUESTS` when enforced.
 
 Export TypeScript interfaces mirroring responses:
 
-- `MeResponse`, `UserResponse`, `HealthResponse`, `ApiErrorBody`
+- `MeResponse`, `UserResponse`, `ProductResponse`, `HealthResponse`, `ApiErrorBody`
 - Shell imports these for `fetch` typing; API imports for controller return types.
 
 ## CORS (shell → API)

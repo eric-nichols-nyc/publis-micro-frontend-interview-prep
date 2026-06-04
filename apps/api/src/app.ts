@@ -4,6 +4,7 @@ import { errorHandler } from "./middleware/error-handler.js";
 import { authRouter } from "./routes/auth.js";
 import { healthRouter } from "./routes/health.js";
 import { meRouter } from "./routes/me.js";
+import { productsRouter } from "./routes/products.js";
 import { usersRouter } from "./routes/users.js";
 
 export const createApp = (): Express => {
@@ -15,6 +16,7 @@ export const createApp = (): Express => {
   app.use("/health", healthRouter);
   app.use("/api/auth", authRouter);
   app.use("/api/me", meRouter);
+  app.use("/api/products", productsRouter);
   app.use("/api/users", usersRouter);
 
   app.use(errorHandler);

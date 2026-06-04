@@ -2,8 +2,8 @@ import { lazy, type ComponentType } from "react";
 import type { RemoteSlotProps } from "@repo/mfe-shared";
 import { RemoteLoadFallback } from "../components/remote-fallback";
 
-export function loadRemote(
-  importer: () => Promise<{ default: ComponentType<RemoteSlotProps> }>,
+export function loadRemote<T extends RemoteSlotProps = RemoteSlotProps>(
+  importer: () => Promise<{ default: ComponentType<T> }>,
   label: string
 ) {
   return lazy(() =>
