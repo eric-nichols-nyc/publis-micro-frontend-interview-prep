@@ -11,7 +11,7 @@
 | 07 | Shell auth (Neon + API) | [07-shell-auth.md](./07-shell-auth.md) · **[E2E gate](./07-auth-e2e-gate.md)** | **Completed** | 11 (API), Neon Auth project |
 | 08 | Cart flow (cross-MFE + persisted) | [08-cart-flow/overview.md](./08-cart-flow/overview.md) | **Completed** (phase 1 + 2) | 04, 05, 07, 12 |
 | 09 | Production remote URLs | [09-prod-remote-env.md](./09-prod-remote-env.md) | **Completed** | 01 |
-| 10 | E2E smoke tests | [10-e2e-smoke.md](./10-e2e-smoke.md) | Draft | 01 |
+| 10 | E2E smoke tests | [10-e2e-smoke.md](./10-e2e-smoke.md) | **Completed** | 01 |
 | 11 | API application | [02-api-application/overview.md](./02-api-application/overview.md) | **In progress** | DB migrate, Neon Auth |
 | 12 | API product catalog | [12-api-product-catalog.md](./12-api-product-catalog.md) | **Completed** | 11 (API), 04, 07 (route gate) |
 
@@ -28,8 +28,8 @@ Stable spec **numbers** are IDs, not strict build order. Use this sequence to av
 
 | Phase | Specs | Notes |
 |-------|-------|-------|
-| **Done** | 01, 02, 04, 05, 07, 09, 12, **08** | Catalog API; auth gate; prod remote URLs; [cart flow](./08-cart-flow/overview.md) |
-| **Next** | **10** | E2E smoke |
+| **Done** | 01, 02, 04, 05, 07, 09, 10, 12, **08** | Catalog API; auth; prod URLs; E2E smoke; [cart flow](./08-cart-flow/overview.md) |
+| **Next** | **11** (close out) or **03**/**06** | API baseline sign-off · optional polish |
 | **In progress** | 11 | API app baseline (cart API in 08 phase 2) |
 | **Optional** | 03, 06 | Polish / third remote |
 | **Hardening** | 09 → 10 | Deploy URLs, E2E smoke |

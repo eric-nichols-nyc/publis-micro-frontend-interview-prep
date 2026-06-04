@@ -63,6 +63,7 @@ Split the frontend by **business domain** so teams can develop, deploy, and scal
 | Routing / deep links? | `apps/shell/src/app.tsx` |
 | Duplicate React? | `federation-shared.ts` |
 | Independent deploy? | Per-app `dist/`, env remote URLs on shell |
+| CI / integration smoke? | `bun run test:e2e` — Playwright + `data-remote` markers (spec **10**) |
 | Real-world use case? | E-commerce: catalog + cart teams |
 
 ## Key files

@@ -1,0 +1,30 @@
+name: E2E MFE smoke
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: package.json
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Install Playwright browser
+        run: bun run test:e2e:install
+
+      - name: Run MFE smoke tests
+        run: bun run test:e2e
+        env:
+          CI: true
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}

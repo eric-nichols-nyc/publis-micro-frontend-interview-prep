@@ -6,6 +6,8 @@
     "build": "turbo build",
     "build:remotes": "turbo build --filter=mfe-products --filter=mfe-cart",
     "preview:remotes": "turbo preview --filter=mfe-products --filter=mfe-cart",
+    "test:e2e": "cd apps/shell && bun run test:e2e",
+    "test:e2e:install": "cd apps/shell && bun run test:e2e:install",
     "dev": "turbo dev --filter=mfe-products --filter=mfe-cart --filter=shell --filter=api",
     "dev:api": "turbo dev --filter=api",
     "check": "ultracite check",

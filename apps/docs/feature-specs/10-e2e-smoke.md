@@ -2,7 +2,7 @@
 
 ## Status
 
-**Draft** — approve when adding Playwright to the repo.
+**Completed** — T1–T2 (2026-06-04).
 
 ## Goal
 
@@ -14,12 +14,12 @@ As a maintainer, I want CI to verify the integrated MFE app so independent remot
 
 ## Requirements
 
-- [ ] Playwright (or existing monorepo test runner) configured at repo root or `apps/shell`
-- [ ] Test script starts remotes + shell (or uses `preview` against prebuilt `dist/`)
-- [ ] Tests: home loads, `/products` contains catalog marker, `/cart` contains cart marker
-- [ ] Optional: nav between routes
-- [ ] Document CI requirement in README (GitHub Actions outline OK as markdown only in T1)
-- [ ] `turbo test` or `bun run test:e2e` wired at root
+- [x] Playwright (or existing monorepo test runner) configured at repo root or `apps/shell`
+- [x] Test script starts remotes + shell (or uses `preview` against prebuilt `dist/`)
+- [x] Tests: home loads, `/products` contains catalog marker, `/cart` contains cart marker
+- [x] Optional: nav between routes
+- [x] Document CI requirement in README (GitHub Actions outline OK as markdown only in T1)
+- [x] `turbo test` or `bun run test:e2e` wired at root
 
 ## Out of scope
 
@@ -35,8 +35,8 @@ As a maintainer, I want CI to verify the integrated MFE app so independent remot
 
 ## Acceptance criteria
 
-- [ ] `bun run test:e2e` (or documented command) passes locally with dev/preview setup
-- [ ] Failing remote URL causes test failure (proves integration tested)
+- [x] `bun run test:e2e` (or documented command) passes locally with dev/preview setup
+- [x] Failing remote URL causes test failure (proves integration tested)
 
 ## Implementation tasks
 

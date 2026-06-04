@@ -46,6 +46,8 @@ Required before other MFE work. Configure Neon on shell + API (`DEV_AUTH_*` off)
 | `bun run build` | Build all workspace packages with a `build` script |
 | `bun run build:remotes` | Build `mfe-products` + `mfe-cart` only |
 | `bun run preview:remotes` | Preview built remotes on :5174 / :5175 |
+| `bun run test:e2e:install` | Install Playwright Chromium (first time) |
+| `bun run test:e2e` | Playwright smoke — shell + remotes + API (starts `bun run dev` unless already running) |
 | `bun run typecheck` | Typecheck across workspace |
 | `bun run check` / `fix` | Lint and format |
 | `bun run migrate` | Prisma migrate (`packages/database`) |
@@ -87,6 +89,20 @@ cd apps/shell && bun run preview
 ```
 
 Open **http://localhost:5173** and exercise `/products` and `/cart`.
+
+### E2E smoke tests
+
+Playwright lives in `apps/shell/e2e/`. The runner starts **`bun run dev`** (shell, both remotes, API) unless something is already listening on `:5173`.
+
+**Prerequisites:** `packages/database/.env` with `DATABASE_URL` (sign-up hits the API). First run: `bun run test:e2e:install`.
+
+```sh
+bun run test:e2e
+```
+
+Tests cover home, federated `/products` and `/cart` (`data-remote` markers), and main nav. To prove integration: stop `mfe-cart` and re-run — `/cart` should fail.
+
+**CI:** [.github/workflows/e2e-mfe.yml](.github/workflows/e2e-mfe.yml) — set repo secret `DATABASE_URL` (Neon connection string).
 
 ## Documentation
 

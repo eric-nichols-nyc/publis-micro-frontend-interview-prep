@@ -281,3 +281,9 @@ packages/database/generated
 # Obsidian
 .obsidian/
 .trash/
+
+# Playwright (apps/shell)
+apps/shell/test-results/
+apps/shell/playwright-report/
+apps/shell/blob-report/
+apps/shell/.playwright/
