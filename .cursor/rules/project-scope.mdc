@@ -1,0 +1,15 @@
+---
+alwaysApply: true
+---
+description: Restrict Cursor to documented project scope
+---
+
+Work only in documented in-scope paths.
+
+Default allowed paths:
+
+- apps/web
+- packages/design-system
+
+Do not read, search, or edit unrelated apps or packages unless the user explicitly expands scope.
+```

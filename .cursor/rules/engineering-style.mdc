@@ -1,0 +1,20 @@
+---
+description: Eric's engineering style for React/Next.js projects
+globs:
+  - apps/web/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+When working in the web app:
+
+- Use TypeScript strictly. Avoid `any`; prefer `unknown`, proper generics, or explicit types.
+- Prefer Server Components by default. Use `"use client"` only for interactivity or browser APIs.
+- Keep routes/pages thin. Move feature logic into `features/<name>/`.
+- Follow SOLID principles where practical.
+- Keep components focused on one responsibility.
+- Extract reusable UI logic into `use-*` hooks.
+- Prefer composition over inheritance.
+- Use Zod for validation when validating external input.
+- Prefer existing UI/design-system components before creating new ones.
+- Avoid premature abstraction. Duplicate twice; abstract on the third use.
+- Optimize for code that is easy to read, test, and change later.

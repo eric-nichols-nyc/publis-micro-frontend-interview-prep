@@ -1,0 +1,14 @@
+---
+description: Coding standards
+alwaysApply: true
+---
+
+When generating code:
+
+- Prefer readability over cleverness
+- Use meaningful names
+- Keep functions focused
+- Avoid premature abstractions
+- Follow SOLID principles
+- Keep business logic out of UI components
+- Prefer existing patterns over introducing new ones

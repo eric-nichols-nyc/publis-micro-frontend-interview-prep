@@ -1,0 +1,25 @@
+```md
+---
+description: Web app spec-driven workflow
+globs:
+  - apps/web/**/*
+alwaysApply: false
+---
+
+When working in `apps/web`:
+
+1. Read `apps/web/AGENTS.md`
+2. Read `apps/web/docs/AGENTS.md`
+3. Read `apps/web/docs/progress-tracker.md`
+4. Read the relevant feature spec from `apps/web/docs/feature-specs/`
+
+Before finishing:
+
+- Update `apps/web/docs/progress-tracker.md`
+- Update `apps/web/docs/feature-specs/00-index.md` if feature status changed
+- Run the relevant validation command when code changed
+
+Do not consider the task complete until the tracker is updated.
+```
+
+-

@@ -1,0 +1,12 @@
+
+```txt
+node_modules
+.next
+dist
+build
+coverage
+
+apps/experimental
+apps/storybook
+packages/legacy
+```
