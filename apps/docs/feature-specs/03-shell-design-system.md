@@ -30,7 +30,7 @@ As a visitor, I want the shell to use consistent UI components so the app feels 
 ## Architecture impact
 
 - Apps: `shell` only
-- Packages: `@repo/design-system`, `@repo/auth` (transitive via DS provider — do not wire auth UI unless required by provider)
+- Packages: `@repo/design-system`, `@repo/neon-auth` (transitive via `DesignSystemProvider` — passthrough until sign-in UI)
 - New package: no
 
 ## Proposed file structure

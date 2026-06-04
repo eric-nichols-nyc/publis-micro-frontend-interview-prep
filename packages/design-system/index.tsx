@@ -1,4 +1,4 @@
-import { AuthProvider } from "@repo/auth/provider";
+import { NeonAuthProvider } from "@repo/neon-auth/provider";
 import type { ThemeProviderProps } from "next-themes";
 import { Toaster } from "./components/ui/sonner";
 import { TooltipProvider } from "./components/ui/tooltip";
@@ -18,9 +18,13 @@ export const DesignSystemProvider = ({
   ...properties
 }: DesignSystemProviderProperties) => (
   <ThemeProvider {...properties}>
-    <AuthProvider helpUrl={helpUrl} privacyUrl={privacyUrl} termsUrl={termsUrl}>
+    <NeonAuthProvider
+      helpUrl={helpUrl}
+      privacyUrl={privacyUrl}
+      termsUrl={termsUrl}
+    >
       <TooltipProvider>{children}</TooltipProvider>
       <Toaster />
-    </AuthProvider>
+    </NeonAuthProvider>
   </ThemeProvider>
 );

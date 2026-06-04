@@ -5,7 +5,7 @@ import { ThemeProvider } from "./theme";
 
 /**
  * Design-system root for Vite MFE shell — theme, tooltips, toasts only.
- * Omits Clerk `AuthProvider` (Next.js-only); shell uses mock user until spec 07.
+ * Omits auth provider; shell loads user via `ApiUserProvider` + API (`@repo/neon-auth`).
  */
 export const MfeShellProvider = ({
   children,

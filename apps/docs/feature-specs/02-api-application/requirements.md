@@ -96,7 +96,7 @@
 - Direct MFE → API calls
 - Full RBAC admin APIs
 - AI inference pipelines
-- Replacing `@repo/auth` Clerk exports in other apps (document migration path only)
+- Replacing `@repo/auth` Clerk exports in unrelated Next.js apps (document migration path only; MFE uses `@repo/neon-auth`)
 - Email webhooks / Neon Auth sync workers (future)
 
 ## Assumptions

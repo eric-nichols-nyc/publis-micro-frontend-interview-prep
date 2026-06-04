@@ -6,8 +6,7 @@
 
 ### Repo context
 
-- `@repo/auth` currently re-exports **Clerk** (`@clerk/nextjs/server`). This spec does **not** require Clerk for the API.
-- **Migration path:** Refactor `@repo/auth` into Neon Auth–aware `client.ts` (browser) and `server.ts` (API verification) without breaking unrelated Next.js apps in the monorepo—or add `packages/neon-auth` if separation is cleaner (record choice in OD log).
+- **`@repo/neon-auth`** (`packages/neon-auth`) provides browser client, API `verifySession`, and `NeonAuthProvider` for design-system roots. **`@repo/auth`** (Clerk) is deprecated and not used by the API or MFE shell.
 
 ### Neon Auth responsibilities
 

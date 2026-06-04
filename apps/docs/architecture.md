@@ -89,5 +89,5 @@ Documented in [AGENTS.md](./AGENTS.md#code-conventions). Summary:
 | Package | Purpose |
 |---------|---------|
 | `@repo/design-system` | Shared UI — integrate via future spec |
-| `@repo/auth` | Clerk — replace mock user when spec’d |
+| `@repo/neon-auth` | Neon Auth — API session verify + shell client (`@repo/auth` Clerk deprecated) |
 | `@repo/database` | Prisma — optional backend for future features |

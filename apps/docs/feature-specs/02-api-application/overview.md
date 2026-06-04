@@ -80,7 +80,7 @@ Module Federation boundaries stay unchanged: remotes are deployable UI slices; t
 | Package | Role for API |
 |---------|----------------|
 | `@repo/database` | Prisma client, Neon adapter, migrations (existing) |
-| `@repo/auth` | **Evolve** from Clerk re-exports to Neon Auth server helpers (or thin wrapper package) |
+| `@repo/neon-auth` | Neon Auth client, server verification, design-system provider slot |
 | `@repo/types` | **New** — shared DTOs, API error shapes, route params (proposed) |
 | `@repo/mfe-shared` | Frontend `User` type alignment; API maps DB user → shared shape |
 | `@repo/typescript-config` | TS base for `apps/api` |

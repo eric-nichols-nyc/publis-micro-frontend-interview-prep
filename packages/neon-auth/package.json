@@ -6,6 +6,7 @@
   "exports": {
     ".": "./src/index.ts",
     "./client": "./src/client.ts",
+    "./provider": "./src/provider.tsx",
     "./server": "./src/server/index.ts",
     "./keys": "./src/keys.ts"
   },
@@ -15,12 +16,14 @@
   },
   "dependencies": {
     "@neondatabase/auth": "0.4.1-beta",
+    "react": "19.2.4",
     "server-only": "^0.0.1",
     "zod": "^4.3.6"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
     "@types/node": "25.3.5",
+    "@types/react": "^19.2.14",
     "typescript": "^5.9.3"
   }
 }

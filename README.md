@@ -19,7 +19,7 @@ A **Turborepo** workspace for practicing micro-frontend interviews: Vite Module 
 | `@repo/typescript-config` | Shared TypeScript configs |
 | `@repo/design-system` | shadcn/ui components (retained for future shell UI) |
 | `@repo/neon-auth` | Neon Auth client (shell) + server session verify (API) |
-| `@repo/auth` | Clerk (deprecated; design-system only) |
+| `@repo/neon-auth` | Neon Auth (API + shell); `@repo/auth` Clerk deprecated |
 | `@repo/database` | Prisma + Neon Postgres |
 
 ## Getting started
