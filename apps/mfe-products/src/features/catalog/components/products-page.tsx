@@ -1,13 +1,25 @@
 import type { RemoteSlotProps } from "@repo/mfe-shared";
+import { useEffect, useState } from "react";
+import { useProductSearch } from "../hooks/use-product-search";
+import { CatalogEmptyState } from "./catalog-empty-state";
+import { ProductList } from "./product-list";
+import { ProductListSkeleton } from "./product-list-skeleton";
+import { ProductSearch } from "./product-search";
 import "../../../styles.css";
 
-const products = [
-  { id: "sku_1", name: "Trail Runner Pack", price: 89 },
-  { id: "sku_2", name: "Insulated Bottle", price: 24 },
-  { id: "sku_3", name: "Merino Base Layer", price: 65 },
-];
+const CATALOG_LOAD_DELAY_MS = 400;
 
 export function ProductsPage({ user }: RemoteSlotProps) {
+  const [isLoading, setIsLoading] = useState(true);
+  const { query, setQuery, filteredProducts } = useProductSearch();
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setIsLoading(false), CATALOG_LOAD_DELAY_MS);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  const showEmpty = !isLoading && filteredProducts.length === 0;
+
   return (
     <section className="mfe-panel" data-remote="mfe-products">
       <header className="mfe-panel__header">
@@ -15,14 +27,20 @@ export function ProductsPage({ user }: RemoteSlotProps) {
         <span className="mfe-panel__meta">Team: Catalog</span>
       </header>
       <p className="mfe-panel__user">Browsing as {user.name}</p>
-      <ul className="product-list">
-        {products.map((product) => (
-          <li className="product-card" key={product.id}>
-            <span>{product.name}</span>
-            <strong>${product.price}</strong>
-          </li>
-        ))}
-      </ul>
+
+      <ProductSearch
+        query={query}
+        onQueryChange={setQuery}
+        resultCount={isLoading ? 0 : filteredProducts.length}
+      />
+
+      {isLoading ? (
+        <ProductListSkeleton />
+      ) : showEmpty ? (
+        <CatalogEmptyState query={query} />
+      ) : (
+        <ProductList products={filteredProducts} />
+      )}
     </section>
   );
 }

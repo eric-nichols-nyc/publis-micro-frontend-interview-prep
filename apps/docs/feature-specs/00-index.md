@@ -5,7 +5,7 @@
 | 01 | MFE v1 baseline | [01-mfe-v1-baseline.md](./01-mfe-v1-baseline.md) | **Completed** | — |
 | 02 | Feature folder refactor | [02-feature-folder-refactor.md](./02-feature-folder-refactor.md) | **Completed** | 01 |
 | 03 | Shell design system | [03-shell-design-system.md](./03-shell-design-system.md) | Draft | 02 recommended |
-| 04 | Products catalog | [04-products-catalog.md](./04-products-catalog.md) | Draft | 02 |
+| 04 | Products catalog | [04-products-catalog.md](./04-products-catalog.md) | **Completed** | 02 |
 | 05 | Cart (interactive) | [05-cart.md](./05-cart.md) | Draft | 02, 04 recommended |
 | 06 | Checkout remote (optional) | [06-checkout-remote.md](./06-checkout-remote.md) | Draft | 02 |
 | 07 | Shell auth (Clerk) | [07-shell-auth.md](./07-shell-auth.md) | Draft | 03 recommended |

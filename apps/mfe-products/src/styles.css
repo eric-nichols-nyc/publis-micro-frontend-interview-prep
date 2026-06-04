@@ -54,8 +54,117 @@
 .product-card {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: var(--mfe-space-4);
   background: var(--mfe-color-bg);
   padding: var(--mfe-space-3) var(--mfe-space-4);
   border: 1px solid var(--mfe-color-border);
   border-radius: var(--mfe-radius);
+}
+
+.product-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mfe-space-1);
+}
+
+.product-card__name {
+  font-weight: 500;
+}
+
+.product-card__category {
+  color: var(--mfe-color-muted);
+  font-size: 0.75rem;
+}
+
+.product-card__price {
+  font-variant-numeric: tabular-nums;
+}
+
+.catalog-search {
+  margin-bottom: var(--mfe-space-4);
+}
+
+.catalog-search__label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: var(--mfe-space-2);
+}
+
+.catalog-search__input {
+  width: 100%;
+  max-width: 24rem;
+  padding: var(--mfe-space-2) var(--mfe-space-3);
+  border: 1px solid var(--mfe-color-border);
+  border-radius: var(--mfe-radius);
+  background: var(--mfe-color-bg);
+  color: var(--mfe-color-text);
+  font: inherit;
+}
+
+.catalog-search__input:focus {
+  outline: 2px solid var(--mfe-color-accent, #3b82f6);
+  outline-offset: 2px;
+}
+
+.catalog-search__meta {
+  margin: var(--mfe-space-2) 0 0;
+  color: var(--mfe-color-muted);
+  font-size: 0.75rem;
+}
+
+.catalog-empty {
+  padding: var(--mfe-space-6);
+  text-align: center;
+  border: 1px dashed var(--mfe-color-border);
+  border-radius: var(--mfe-radius);
+  background: var(--mfe-color-bg);
+}
+
+.catalog-empty__title {
+  margin: 0 0 var(--mfe-space-2);
+  font-weight: 500;
+}
+
+.catalog-empty__hint {
+  margin: 0;
+  color: var(--mfe-color-muted);
+  font-size: 0.875rem;
+}
+
+.skeleton-block {
+  display: block;
+  height: 0.875rem;
+  border-radius: var(--mfe-radius);
+  background: linear-gradient(
+    90deg,
+    var(--mfe-color-border) 25%,
+    var(--mfe-color-surface) 50%,
+    var(--mfe-color-border) 75%
+  );
+  background-size: 200% 100%;
+  animation: catalog-skeleton 1.2s ease-in-out infinite;
+}
+
+.skeleton-block--wide {
+  width: 60%;
+}
+
+.skeleton-block--narrow {
+  width: 2.5rem;
+  margin-left: auto;
+}
+
+.product-card--skeleton {
+  justify-content: space-between;
+}
+
+@keyframes catalog-skeleton {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }

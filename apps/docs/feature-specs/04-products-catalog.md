@@ -2,7 +2,7 @@
 
 ## Status
 
-**Draft** — approve after **02** (feature folders in place).
+**Completed** — T1–T3 implemented in `mfe-products`.
 
 ## Goal
 
@@ -14,12 +14,12 @@ As a shopper, I want to browse and search products so I can find items before ad
 
 ## Requirements
 
-- [ ] Product list with at least 6 mock items in `features/catalog/lib/mock-products.ts`
-- [ ] Search/filter by name (client-side)
-- [ ] Empty state when filter matches nothing
-- [ ] Loading skeleton or brief simulated loading state on first mount (optional but recommended for interview)
-- [ ] `ProductsPage` still accepts `RemoteSlotProps` (`user` displayed)
-- [ ] Federation expose remains `./ProductsPage` (via root re-export)
+- [x] Product list with at least 6 mock items in `features/catalog/lib/mock-products.ts`
+- [x] Search/filter by name (client-side)
+- [x] Empty state when filter matches nothing
+- [x] Loading skeleton or brief simulated loading state on first mount (optional but recommended for interview)
+- [x] `ProductsPage` still accepts `RemoteSlotProps` (`user` displayed)
+- [x] Federation expose remains `./ProductsPage` (via root re-export)
 
 ## Out of scope
 
@@ -52,10 +52,10 @@ apps/mfe-products/src/features/catalog/
 
 ## Acceptance criteria
 
-- [ ] Search filters visible products
-- [ ] Empty filter shows empty state
-- [ ] Shell `/products` shows updated UI
-- [ ] `bun run build --filter=mfe-products` passes
+- [x] Search filters visible products
+- [x] Empty filter shows empty state
+- [x] Shell `/products` shows updated UI
+- [x] `bun run build --filter=mfe-products` passes
 
 ## Implementation tasks
 
