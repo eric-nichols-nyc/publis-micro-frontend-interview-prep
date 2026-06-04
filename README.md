@@ -6,9 +6,10 @@ A **Turborepo** workspace for practicing micro-frontend interviews: Vite Module 
 
 | App | Port | Role |
 |-----|------|------|
-| `shell` | 5173 | Host — routing, nav, mock auth, error boundaries |
+| `shell` | 5173 | Host — routing, nav, session via API, error boundaries |
 | `mfe-products` | 5174 | Remote — `ProductsPage` |
 | `mfe-cart` | 5175 | Remote — `CartWidget` |
+| `api` | 3001 | Express — health, `/api/me`, user routes (`@repo/neon-auth`, `@repo/database`) |
 
 ## Packages
 
@@ -17,8 +18,9 @@ A **Turborepo** workspace for practicing micro-frontend interviews: Vite Module 
 | `@repo/mfe-shared` | Types, tokens, mock user, federation shared config (used by MFE apps) |
 | `@repo/typescript-config` | Shared TypeScript configs |
 | `@repo/design-system` | shadcn/ui components (retained for future shell UI) |
-| `@repo/auth` | Clerk auth utilities (retained; MFE demo uses mock user today) |
-| `@repo/database` | Prisma + Neon (retained for future features) |
+| `@repo/neon-auth` | Neon Auth client (shell) + server session verify (API) |
+| `@repo/auth` | Clerk (deprecated; design-system only) |
+| `@repo/database` | Prisma + Neon Postgres |
 
 ## Getting started
 
@@ -35,7 +37,8 @@ Open **http://localhost:5173**
 
 | Command | Description |
 |---------|-------------|
-| `bun run dev` | Shell + remotes |
+| `bun run dev` | Shell + remotes + API |
+| `bun run dev:api` | API only |
 | `bun run build` | Build all workspace packages with a `build` script |
 | `bun run typecheck` | Typecheck across workspace |
 | `bun run check` / `fix` | Lint and format |

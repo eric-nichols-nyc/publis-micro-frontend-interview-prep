@@ -9,11 +9,13 @@ Default allowed paths:
 - apps/shell
 - apps/mfe-products
 - apps/mfe-cart
+- apps/api
 - apps/docs
 - packages/mfe-shared
 - packages/typescript-config
 - packages/design-system
 - packages/auth
 - packages/database
+- packages/neon-auth
 
 Do not read, search, or edit unrelated paths unless the user explicitly expands scope.

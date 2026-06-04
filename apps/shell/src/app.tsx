@@ -1,5 +1,5 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { mockUser } from "@repo/mfe-shared";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { UserProvider } from "./context/user-context";
 import { CartRoutePage } from "./features/cart-route/components/cart-route-page";
 import { HomePage } from "./features/home/components/home-page";

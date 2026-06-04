@@ -29,9 +29,10 @@ Operating manual for agents working on the **micro-frontend interview** repo.
 - `apps/shell`
 - `apps/mfe-products`
 - `apps/mfe-cart`
+- `apps/api`
 - `packages/mfe-shared`
 - `packages/typescript-config`
-- `packages/design-system`, `packages/auth`, `packages/database` (optional integrations — not wired into MFE demo by default)
+- `packages/design-system`, `packages/auth`, `packages/database`, `packages/neon-auth`
 
 ## Stack (MFE)
 
@@ -40,23 +41,25 @@ Operating manual for agents working on the **micro-frontend interview** repo.
 - React Router — **shell only**
 - Shared workspace package: `@repo/mfe-shared`
 
-## Auth (v1)
+## Auth
 
-- **No** dedicated `packages/auth` folder.
-- Mock user in `@repo/mfe-shared`; `UserProvider` in shell; remotes receive `user` via `RemoteSlotProps`.
-- Real auth (deferred): implement in `apps/shell` first; add `packages/mfe-auth` only if shared helpers are duplicated.
+- **API + Neon:** `@repo/neon-auth` (shell client, API `verifySession`); shell `GET /api/me` via `VITE_API_BASE_URL`.
+- Remotes receive read-only `user` via `RemoteSlotProps` (no API or auth SDK in remotes).
+- `@repo/auth` (Clerk) is deprecated — do not extend.
 
 ## Validation
 
 ```sh
 # From repo root
-bun run dev          # shell + remotes
-bun run build        # production build for MFE apps
+bun run dev          # shell + remotes + api
+bun run dev:api      # api only (:3001)
+bun run build        # production build for workspace apps
 
 # Per app
 cd apps/shell && bun run typecheck
 cd apps/mfe-products && bun run typecheck
 cd apps/mfe-cart && bun run typecheck
+cd apps/api && bun run typecheck
 ```
 
 ## Spec-driven workflow

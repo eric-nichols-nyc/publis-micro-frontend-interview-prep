@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
-    "dev": "turbo dev --filter=mfe-products --filter=mfe-cart --filter=shell",
+    "dev": "turbo dev --filter=mfe-products --filter=mfe-cart --filter=shell --filter=api",
+    "dev:api": "turbo dev --filter=api",
     "check": "ultracite check",
     "fix": "ultracite fix",
     "typecheck": "turbo typecheck",

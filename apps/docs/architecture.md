@@ -5,7 +5,7 @@
 ```txt
                     ┌─────────────────────────────────────┐
                     │  apps/shell (host) :5173            │
-                    │  React Router, nav, UserProvider    │
+                    │  React Router, nav, fetch /api/me   │
                     │  ErrorBoundary + loadRemote fallbacks │
                     └──────────────┬──────────────────────┘
                                    │ Module Federation
@@ -14,6 +14,8 @@
     mfe_products:5174    mfe_cart:5175      @repo/mfe-shared
     ./ProductsPage         ./CartWidget       types, tokens,
                                               federationShared
+
+    apps/shell ──HTTP──▶ apps/api :3001 ──▶ @repo/neon-auth, @repo/database
 ```
 
 ## Domain split
@@ -22,7 +24,8 @@
 |--------|-----|--------|-------------------------|
 | Catalog | `mfe-products` | `ProductsPage` | Owns product listing |
 | Cart | `mfe-cart` | `CartWidget` | Owns checkout summary |
-| Shell | `shell` | (consumes remotes) | Owns chrome, routing, session |
+| Shell | `shell` | (consumes remotes) | Owns chrome, routing, session (via API) |
+| API | `api` | REST (`/health`, `/api/me`, …) | Auth verify + Postgres (not a remote) |
 
 ## Shared packages (required)
 
