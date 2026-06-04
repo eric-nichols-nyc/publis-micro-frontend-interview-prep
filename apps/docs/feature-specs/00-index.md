@@ -12,8 +12,11 @@
 | 08 | Cross-MFE add to cart | [08-cross-mfe-cart-sync.md](./08-cross-mfe-cart-sync.md) | Draft | 04, 05 |
 | 09 | Production remote URLs | [09-prod-remote-env.md](./09-prod-remote-env.md) | Draft | 01 |
 | 10 | E2E smoke tests | [10-e2e-smoke.md](./10-e2e-smoke.md) | Draft | 01 |
+| 11 | API application | [02-api-application/overview.md](./02-api-application/overview.md) | Draft | DB migrate, Neon Auth |
 
 Template: [99-template.md](./99-template.md)
+
+Multi-file specs: [02-api-application/](./02-api-application/) (folder id `02`; index **11** to avoid clash with [02-feature-folder-refactor](./02-feature-folder-refactor.md)).
 
 ## Suggested implementation order
 
@@ -24,6 +27,7 @@ Template: [99-template.md](./99-template.md)
 5. **07** — real auth when Clerk env ready
 6. **06** — only if you want three remotes
 7. **09** → **10** — deploy and CI hardening
+8. **11** — API backend (parallel with **07** when Neon Auth ready; unblocks real user data)
 
 ## Status values
 
