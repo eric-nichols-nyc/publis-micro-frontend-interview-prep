@@ -1,4 +1,3 @@
-import { parseError } from '@repo/observability/error';
 import { clsx } from 'clsx';
 import type { ClassValue } from 'clsx';
 import { toast } from 'sonner';
@@ -8,6 +7,16 @@ export const cn = (...inputs: ClassValue[]): string => twMerge(clsx(inputs));
 
 export const capitalize = (str: string) =>
   str.charAt(0).toUpperCase() + str.slice(1);
+
+const parseError = (error: unknown): string => {
+  if (error instanceof Error) {
+    return error.message;
+  }
+  if (typeof error === 'string') {
+    return error;
+  }
+  return 'Something went wrong';
+};
 
 export const handleError = (error: unknown): void => {
   const message = parseError(error);

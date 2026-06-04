@@ -12,3 +12,4 @@ When generating code:
 - Follow SOLID principles
 - Keep business logic out of UI components
 - Prefer existing patterns over introducing new ones
+- In MFE apps (`apps/shell`, `apps/mfe-*`), follow [apps/docs/AGENTS.md](../../apps/docs/AGENTS.md): feature folders under `src/features/` and kebab-case file names

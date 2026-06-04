@@ -1,0 +1,26 @@
+---
+description: MFE app code conventions — feature folders and kebab-case files
+globs:
+  - apps/shell/**/*
+  - apps/mfe-products/**/*
+  - apps/mfe-cart/**/*
+alwaysApply: false
+---
+
+When working in `apps/shell`, `apps/mfe-products`, or `apps/mfe-cart`:
+
+Read [apps/docs/AGENTS.md](../../apps/docs/AGENTS.md) for full rules. Apply these conventions:
+
+## Feature folders
+
+- Put feature code under `src/features/<feature-name>/` (`components/`, `hooks/`, `lib/`, `types.ts`).
+- Keep `src/pages/` (shell) as **thin** route entries that compose from `features/`.
+- Federation expose files at `src/` root may re-export from a feature; prefer moving UI into `features/` first.
+
+## Kebab-case files and folders
+
+- **Files and directories:** kebab-case (`products-page.tsx`, `features/cart-route/`).
+- **React components:** PascalCase identifiers in kebab-case files (`CartWidget` in `cart-widget.tsx`).
+- **Hooks:** `use-*` files, camelCase exports (`use-user.ts` → `useUser`).
+
+Do not add new PascalCase or camelCase **filenames**.

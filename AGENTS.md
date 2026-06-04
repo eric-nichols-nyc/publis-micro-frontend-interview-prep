@@ -1,52 +1,56 @@
 # Repository Agent Entry
 
-This is the root entry point for AI agents.
+Entry point for AI agents on the **micro-frontend interview** repo.
 
 ## Scope
 
-Default in-scope paths:
+**Default in-scope paths:**
 
-- `apps/web`
-- `packages/design-system`
+- `apps/shell`, `apps/mfe-products`, `apps/mfe-cart`
+- `apps/docs` (markdown planning docs only)
+- `packages/mfe-shared`, `packages/typescript-config`
+- `packages/design-system`, `packages/auth`, `packages/database` (when integrating UI, auth, or data)
 
-Do not search or edit other apps or packages unless the user explicitly expands scope.
+Do not search or edit other paths unless the user explicitly expands scope.
+
+## Workflow
+
+### Planning (default)
+
+- Do **not** implement application code unless the user explicitly requests implementation.
+- **Do** update docs under `apps/docs/` when planning or when the user asks for documentation.
+
+### Implementation
+
+- Follow an approved feature spec in `apps/docs/feature-specs/`.
+- Implement one task at a time; update `apps/docs/progress-tracker.md` after meaningful work.
+
+## Read first (MFE)
+
+1. [apps/docs/PRD.md](apps/docs/PRD.md)
+2. [apps/docs/progress-tracker.md](apps/docs/progress-tracker.md)
+3. [apps/docs/architecture.md](apps/docs/architecture.md)
+4. [apps/docs/feature-specs/00-index.md](apps/docs/feature-specs/00-index.md)
+5. Relevant feature spec
+6. [apps/docs/AGENTS.md](apps/docs/AGENTS.md) — stack, validation, auth, code conventions
+
+Interview narrative: [apps/docs/interview-guide.md](apps/docs/interview-guide.md)
 
 ## Monorepo
 
-This repo is a [next-forge](https://github.com/vercel/next-forge) Turborepo. Shared libraries are imported as `@repo/<name>`.
+Turborepo + Bun workspaces. MFE dev:
 
-When scope expands or you need upstream monorepo details, read only what applies to the task:
+```sh
+bun run dev
+bun run build
+```
 
-- `skills/next-forge/references/setup.md` — install, env vars, database, local dev
-- `skills/next-forge/references/architecture.md` — apps, ports, Turborepo scripts
-- `skills/next-forge/references/packages.md` — package APIs (read relevant sections only)
-
-Cross-app conventions:
-
-- Prefer Server Components; add `'use client'` only where needed.
-- Optional integrations degrade gracefully when env vars are missing.
-- Add shadcn/ui components: `npx shadcn@latest add <component> -c packages/design-system`
-
-## Read First
-
-For web app work:
-
-1. Read `apps/web/AGENTS.md`
-2. Read `apps/web/docs/AGENTS.md`
-3. Read `apps/web/docs/progress-tracker.md`
-4. Read the relevant feature spec in `apps/web/docs/feature-specs/`
-
-For main app work (`apps/app`, when scope is expanded):
-
-1. Read `apps/app/AGENTS.md`
-2. Read `apps/app/docs/AGENTS.md`
-3. Read `apps/app/docs/progress-tracker.md`
-4. Read the relevant feature spec in `apps/app/docs/feature-specs/`
+Human quickstart: [README.md](README.md)
 
 ## Rules
 
-- Follow documented feature specs.
-- Do not invent requirements.
+- Follow documented feature specs; do not invent requirements.
 - Ask when requirements are ambiguous.
-- Keep changes scoped to the requested feature.
-- Update the progress tracker after meaningful work.
+- Keep changes scoped to the requested feature or doc task.
+- Auth v1 in the MFE demo is **mock only** (`mfe-shared` + shell); use `@repo/auth` only when a spec integrates real auth.
+- MFE apps use **`src/features/<name>/`** and **kebab-case** file names — see [apps/docs/AGENTS.md](apps/docs/AGENTS.md#code-conventions).

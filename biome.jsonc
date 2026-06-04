@@ -1,9 +1,6 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-  "extends": ["ultracite/core", "ultracite/react", "ultracite/next"],
-  "javascript": {
-    "globals": ["Liveblocks"]
-  },
+  "extends": ["ultracite/core", "ultracite/react"],
   "linter": {
     "rules": {
       "performance": {
@@ -16,12 +13,7 @@
       "**/*",
       "!packages/design-system/components/ui",
       "!packages/design-system/lib",
-      "!packages/design-system/hooks",
-      "!packages/collaboration/config.ts",
-      "!docs",
-      "!apps/docs/**/*.json",
-      "!apps/email/.react-email",
-      "!packages/cms/basehub-types.d.ts"
+      "!packages/design-system/hooks"
     ]
   }
 }

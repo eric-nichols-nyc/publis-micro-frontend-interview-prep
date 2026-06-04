@@ -1,0 +1,16 @@
+:root {
+  --mfe-color-bg: #0f1419;
+  --mfe-color-surface: #1a2332;
+  --mfe-color-border: #2d3a4f;
+  --mfe-color-text: #e8edf4;
+  --mfe-color-muted: #9aa8bc;
+  --mfe-color-accent: #3b82f6;
+  --mfe-color-accent-hover: #2563eb;
+  --mfe-color-danger: #ef4444;
+  --mfe-radius: 8px;
+  --mfe-space-2: 0.5rem;
+  --mfe-space-3: 0.75rem;
+  --mfe-space-4: 1rem;
+  --mfe-space-6: 1.5rem;
+  --mfe-font-sans: system-ui, -apple-system, sans-serif;
+}
