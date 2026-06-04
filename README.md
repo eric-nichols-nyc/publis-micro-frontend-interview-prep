@@ -50,7 +50,7 @@ Stop only `mfe-cart`, visit http://localhost:5173/cart — fallback UI; shell na
 
 All planning docs: **[apps/docs/](apps/docs/)**
 
-- [PRD](apps/docs/PRD.md) · [Architecture](apps/docs/architecture.md) · [Interview guide](apps/docs/interview-guide.md) · [Progress](apps/docs/progress-tracker.md)
+- [PRD](apps/docs/PRD.md) · [Architecture](apps/docs/architecture.md) · [Feature specs](apps/docs/feature-specs/00-index.md) · [Interview guide](apps/docs/interview-guide.md)
 
 Agents: [AGENTS.md](AGENTS.md) → [apps/docs/AGENTS.md](apps/docs/AGENTS.md)
 

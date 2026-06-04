@@ -2,7 +2,7 @@
 
 ## Status
 
-**Draft** — approve after **02**; ideally after **04** so product IDs exist for mock cart lines.
+**Completed** — T1–T3 implemented in `mfe-cart`.
 
 ## Goal
 
@@ -14,13 +14,13 @@ As a shopper, I want to review and edit my cart so I can see how the checkout te
 
 ## Requirements
 
-- [ ] Cart state held in remote (React state or `features/cart/lib/cart-store.ts` — no global event bus in v1)
-- [ ] Increase/decrease quantity per line (min 1 or remove at 0)
-- [ ] Remove line button
-- [ ] Subtotal recalculates from line prices
-- [ ] Empty cart state with message when no lines
-- [ ] `CartWidget` accepts `RemoteSlotProps`; show `user.email` or name
-- [ ] Federation expose remains `./CartWidget`
+- [x] Cart state held in remote (React state or `features/cart/lib/cart-store.ts` — no global event bus in v1)
+- [x] Increase/decrease quantity per line (min 1 or remove at 0)
+- [x] Remove line button
+- [x] Subtotal recalculates from line prices
+- [x] Empty cart state with message when no lines
+- [x] `CartWidget` accepts `RemoteSlotProps`; show `user.email` or name
+- [x] Federation expose remains `./CartWidget`
 
 ## Out of scope
 
@@ -54,10 +54,10 @@ apps/mfe-cart/src/features/cart/
 
 ## Acceptance criteria
 
-- [ ] Quantity changes update subtotal
-- [ ] Remove line works; empty state when last item removed
-- [ ] Shell `/cart` works; failure demo still works if remote stopped
-- [ ] `bun run build --filter=mfe-cart` passes
+- [x] Quantity changes update subtotal
+- [x] Remove line works; empty state when last item removed
+- [x] Shell `/cart` works; failure demo still works if remote stopped
+- [x] `bun run build --filter=mfe-cart` passes
 
 ## Implementation tasks
 
@@ -97,6 +97,6 @@ Verify:
 
 Implement **T1 only** from `apps/docs/feature-specs/05-cart.md`.
 
-Before coding: read `apps/docs/AGENTS.md`, `progress-tracker.md`, this spec.
+Before coding: read `apps/docs/AGENTS.md` and this spec.
 
-After coding: update `progress-tracker.md`; stop before T2.
+After coding: update this spec and `00-index.md` if needed; stop before T2 unless the user asks to continue.

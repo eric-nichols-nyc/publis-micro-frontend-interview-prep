@@ -84,7 +84,6 @@ apps/mfe-cart/src/
 - [x] `bun run build` passes for shell, mfe-products, mfe-cart
 - [x] `typecheck` passes for all three apps
 - [x] No PascalCase **filenames** in `src/` (except generated `@mf-types`)
-- [x] `progress-tracker.md` updated
 
 ## Implementation tasks
 
@@ -137,6 +136,6 @@ Verify:
 
 Implement **T1 only** from `apps/docs/feature-specs/02-feature-folder-refactor.md`.
 
-Before coding: read `apps/docs/AGENTS.md`, `progress-tracker.md`, this spec.
+Before coding: read `apps/docs/AGENTS.md` and this spec.
 
-After coding: update `progress-tracker.md`; stop before T2.
+After coding: update this spec and `00-index.md` if needed; stop before T2 unless the user asks to continue.

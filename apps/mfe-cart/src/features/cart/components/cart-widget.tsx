@@ -1,12 +1,14 @@
 import type { RemoteSlotProps } from "@repo/mfe-shared";
+import { useCart } from "../hooks/use-cart";
+import { CartEmptyState } from "./cart-empty-state";
+import { CartLineList } from "./cart-line-list";
+import { CartSummary } from "./cart-summary";
 import "../../../styles.css";
 
-const cartItems = [
-  { id: "line_1", name: "Trail Runner Pack", qty: 1 },
-  { id: "line_2", name: "Insulated Bottle", qty: 2 },
-];
-
 export function CartWidget({ user }: RemoteSlotProps) {
+  const { lines, subtotal, updateQuantity, removeLine } = useCart();
+  const isEmpty = lines.length === 0;
+
   return (
     <section className="mfe-panel" data-remote="mfe-cart">
       <header className="mfe-panel__header">
@@ -14,18 +16,19 @@ export function CartWidget({ user }: RemoteSlotProps) {
         <span className="mfe-panel__meta">Team: Checkout</span>
       </header>
       <p className="mfe-panel__user">Cart for {user.email}</p>
-      <ul className="cart-list">
-        {cartItems.map((item) => (
-          <li className="cart-line" key={item.id}>
-            <span>
-              {item.name} × {item.qty}
-            </span>
-          </li>
-        ))}
-      </ul>
-      <p className="cart-total">
-        <strong>Subtotal:</strong> $137
-      </p>
+
+      {isEmpty ? (
+        <CartEmptyState />
+      ) : (
+        <>
+          <CartLineList
+            lines={lines}
+            onQuantityChange={updateQuantity}
+            onRemove={removeLine}
+          />
+          <CartSummary subtotal={subtotal} />
+        </>
+      )}
     </section>
   );
 }

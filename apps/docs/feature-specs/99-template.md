@@ -38,7 +38,7 @@ packages/mfe-shared/src/...
 - [ ] Behavior verified in browser
 - [ ] `bun run build` passes for affected apps
 - [ ] `typecheck` passes for affected apps
-- [ ] `progress-tracker.md` updated
+- [ ] Spec status and `00-index.md` updated if applicable
 
 ## Implementation tasks
 
@@ -59,10 +59,9 @@ Implement T1 only from this spec.
 Before coding:
 
 1. Read `apps/docs/AGENTS.md`
-2. Read `apps/docs/progress-tracker.md`
-3. Read this spec
+2. Read this spec
 
 After coding:
 
-1. Update `progress-tracker.md`
+1. Update this spec and `00-index.md` if status changed
 2. Stop before T2 unless the user asks to continue

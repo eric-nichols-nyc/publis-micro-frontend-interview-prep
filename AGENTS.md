@@ -23,16 +23,15 @@ Do not search or edit other paths unless the user explicitly expands scope.
 ### Implementation
 
 - Follow an approved feature spec in `apps/docs/feature-specs/`.
-- Implement one task at a time; update `apps/docs/progress-tracker.md` after meaningful work.
+- Implement one task at a time; update the spec and `00-index.md` when status changes.
 
 ## Read first (MFE)
 
 1. [apps/docs/PRD.md](apps/docs/PRD.md)
-2. [apps/docs/progress-tracker.md](apps/docs/progress-tracker.md)
-3. [apps/docs/architecture.md](apps/docs/architecture.md)
-4. [apps/docs/feature-specs/00-index.md](apps/docs/feature-specs/00-index.md)
-5. Relevant feature spec
-6. [apps/docs/AGENTS.md](apps/docs/AGENTS.md) — stack, validation, auth, code conventions
+2. [apps/docs/architecture.md](apps/docs/architecture.md)
+3. [apps/docs/feature-specs/00-index.md](apps/docs/feature-specs/00-index.md)
+4. Relevant feature spec
+5. [apps/docs/AGENTS.md](apps/docs/AGENTS.md) — stack, validation, auth, code conventions
 
 Interview narrative: [apps/docs/interview-guide.md](apps/docs/interview-guide.md)
 

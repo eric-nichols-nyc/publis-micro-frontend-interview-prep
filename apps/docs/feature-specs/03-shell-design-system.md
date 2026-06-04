@@ -85,6 +85,6 @@ Verify:
 
 Implement **T1 only** from `apps/docs/feature-specs/03-shell-design-system.md`.
 
-Before coding: read `apps/docs/AGENTS.md`, `progress-tracker.md`, this spec.
+Before coding: read `apps/docs/AGENTS.md` and this spec.
 
-After coding: update `progress-tracker.md`; stop before T2.
+After coding: update this spec and `00-index.md` if needed; stop before T2 unless the user asks to continue.

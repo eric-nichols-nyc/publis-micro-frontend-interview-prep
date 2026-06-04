@@ -7,23 +7,22 @@ Operating manual for agents working on the **micro-frontend interview** repo.
 ### Planning (default)
 
 - Do **not** write or edit application code unless the user explicitly asks to implement.
-- You **may** create or update: `PRD.md`, `architecture.md`, `feature-specs/`, `progress-tracker.md`, `interview-guide.md`, root `AGENTS.md`, `README.md`.
-- Record unresolved decisions in `progress-tracker.md` → **Open Questions**.
+- You **may** create or update: `PRD.md`, `architecture.md`, `feature-specs/`, `interview-guide.md`, root `AGENTS.md`, `README.md`.
+- Record unresolved decisions in the relevant feature spec or `00-index.md` notes when needed.
 
 ### Implementation
 
 - Requires an **approved** feature spec and explicit user request (e.g. “implement T1 from `01-mfe-v1-baseline.md`”).
-- Implement **one spec task at a time**; update `progress-tracker.md` after each task.
+- Implement **one spec task at a time**; update the spec and `00-index.md` when status changes.
 - Do not invent requirements outside the spec.
 
 ## Read order (before any work)
 
 1. `PRD.md`
-2. `progress-tracker.md`
-3. `architecture.md`
-4. `feature-specs/00-index.md`
-5. Relevant feature spec
-6. `interview-guide.md` (for interview narrative only)
+2. `architecture.md`
+3. `feature-specs/00-index.md`
+4. Relevant feature spec
+5. `interview-guide.md` (for interview narrative only)
 
 ## In-scope code paths
 
@@ -64,9 +63,8 @@ cd apps/mfe-cart && bun run typecheck
 
 1. Create or update a feature spec under `feature-specs/`.
 2. Register it in `feature-specs/00-index.md`.
-3. Set **Current Goal** in `progress-tracker.md`.
-4. Implement one task at a time (implementation mode only).
-5. Verify; update tracker and spec status.
+3. Implement one task at a time (implementation mode only).
+4. Verify; update spec status and `00-index.md` when done.
 
 ## Code conventions
 

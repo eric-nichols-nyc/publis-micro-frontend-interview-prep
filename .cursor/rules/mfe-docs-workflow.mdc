@@ -7,12 +7,11 @@ globs:
 When working in `apps/docs`:
 
 1. Read `apps/docs/AGENTS.md`
-2. Read `apps/docs/progress-tracker.md`
-3. Read the relevant feature spec from `apps/docs/feature-specs/`
+2. Read the relevant feature spec from `apps/docs/feature-specs/`
+3. Read `apps/docs/feature-specs/00-index.md` when status or scope is unclear
 
 Default to **planning mode** — no application code unless the user asks to implement.
 
 After meaningful doc work:
 
-- Update `apps/docs/progress-tracker.md`
 - Update `apps/docs/feature-specs/00-index.md` if spec status changed

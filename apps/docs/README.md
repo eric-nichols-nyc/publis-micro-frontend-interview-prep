@@ -5,10 +5,9 @@ Agent and human docs for the micro-frontend interview repo. **Not** a runnable a
 ## Read order
 
 1. [PRD.md](./PRD.md)
-2. [progress-tracker.md](./progress-tracker.md)
-3. [architecture.md](./architecture.md)
-4. [feature-specs/00-index.md](./feature-specs/00-index.md)
-5. Relevant feature spec
-6. [interview-guide.md](./interview-guide.md) (narrative / Q&A)
+2. [architecture.md](./architecture.md)
+3. [feature-specs/00-index.md](./feature-specs/00-index.md)
+4. Relevant feature spec
+5. [interview-guide.md](./interview-guide.md) (narrative / Q&A)
 
 See [AGENTS.md](./AGENTS.md) for agent workflow rules.
