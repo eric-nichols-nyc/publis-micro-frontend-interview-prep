@@ -1,25 +1,14 @@
 import type { AuthenticatedUser } from "@repo/neon-auth";
-import { verifySession } from "@repo/neon-auth/server";
 import type { NextFunction, Request, Response } from "express";
 import { sendError } from "../lib/errors.js";
-
-const toFetchRequest = (req: Request) =>
-  new Request(`http://localhost${req.originalUrl}`, {
-    method: req.method,
-    headers: {
-      ...(req.headers.cookie ? { cookie: req.headers.cookie } : {}),
-      ...(req.headers.authorization
-        ? { authorization: req.headers.authorization }
-        : {}),
-    },
-  });
+import { getRequestUser } from "../lib/get-request-user.js";
 
 export const authMiddleware = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  const result = await verifySession(toFetchRequest(req));
+  const result = await getRequestUser(req);
 
   if (!result.ok) {
     sendError(res, 401, "UNAUTHORIZED", result.message);

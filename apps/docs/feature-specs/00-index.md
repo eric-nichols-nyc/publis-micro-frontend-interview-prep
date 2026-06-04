@@ -8,11 +8,12 @@
 | 04 | Products catalog | [04-products-catalog.md](./04-products-catalog.md) | **Completed** | 02 |
 | 05 | Cart (interactive) | [05-cart.md](./05-cart.md) | **Completed** | 02, 04 recommended |
 | 06 | Checkout remote (optional) | [06-checkout-remote.md](./06-checkout-remote.md) | Draft | 02 |
-| 07 | Shell auth (Clerk) | [07-shell-auth.md](./07-shell-auth.md) | Draft | 03 recommended |
+| 07 | Shell auth (Neon + API) | [07-shell-auth.md](./07-shell-auth.md) · **[E2E gate](./07-auth-e2e-gate.md)** | **In progress** (gate required) | 11 (API), Neon Auth project |
 | 08 | Cross-MFE add to cart | [08-cross-mfe-cart-sync.md](./08-cross-mfe-cart-sync.md) | Draft | 04, 05 |
 | 09 | Production remote URLs | [09-prod-remote-env.md](./09-prod-remote-env.md) | Draft | 01 |
 | 10 | E2E smoke tests | [10-e2e-smoke.md](./10-e2e-smoke.md) | Draft | 01 |
-| 11 | API application | [02-api-application/overview.md](./02-api-application/overview.md) | Draft | DB migrate, Neon Auth |
+| 11 | API application | [02-api-application/overview.md](./02-api-application/overview.md) | **In progress** | DB migrate, Neon Auth |
+| 12 | API product catalog | [12-api-product-catalog.md](./12-api-product-catalog.md) | **Approved** | 11 (API), 04, 07 (route gate) |
 
 Template: [99-template.md](./99-template.md)
 
@@ -24,10 +25,11 @@ Multi-file specs: [02-api-application/](./02-api-application/) (folder id `02`; 
 2. **03** — shell UI polish
 3. **04** → **05** — domain features
 4. **08** — cross-MFE story (strong interview)
-5. **07** — real auth when Clerk env ready
+5. **11** + **07** — API session verify + shell sign-in/out (active on `feature/shell-auth`)
 6. **06** — only if you want three remotes
 7. **09** → **10** — deploy and CI hardening
-8. **11** — API backend (parallel with **07** when Neon Auth ready; unblocks real user data)
+
+**07** — Code through T2.3 is done. **Must pass [07-auth-e2e-gate.md](./07-auth-e2e-gate.md)** (sign-up, sign-in, sign-out on shell + `/api/me` + remotes) before other features. API: Neon env only (`DEV_AUTH_*` off). See [auth-strategy.md](./02-api-application/auth-strategy.md).
 
 ## Status values
 

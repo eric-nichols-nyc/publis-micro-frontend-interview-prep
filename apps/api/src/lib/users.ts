@@ -1,10 +1,34 @@
+import { randomUUID } from "node:crypto";
 import { database } from "./db.js";
+import { hashPassword } from "./password.js";
 
 export const findUserByAuthId = async (authUserId: string) =>
   database.user.findUnique({ where: { authUserId } });
 
+export const findUserByEmail = async (email: string) =>
+  database.user.findUnique({ where: { email: email.toLowerCase() } });
+
 export const findUserById = async (id: number) =>
   database.user.findUnique({ where: { id } });
+
+export const createUserWithPassword = async (input: {
+  email: string;
+  password: string;
+  name?: string | null;
+}) => {
+  const email = input.email.toLowerCase().trim();
+  const passwordHash = await hashPassword(input.password);
+
+  return database.user.create({
+    data: {
+      authUserId: `local:${randomUUID()}`,
+      email,
+      name: input.name?.trim() || null,
+      passwordHash,
+      role: "user",
+    },
+  });
+};
 
 export const ensureUserProfile = async (input: {
   authUserId: string;

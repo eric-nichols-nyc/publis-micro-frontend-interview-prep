@@ -7,12 +7,7 @@ const serverSchema = z.object({
   DEV_AUTH_EMAIL: z.email().optional(),
 });
 
-const clientSchema = z.object({
-  VITE_NEON_AUTH_URL: z.url().optional(),
-});
-
 export type NeonAuthServerKeys = z.infer<typeof serverSchema>;
-export type NeonAuthClientKeys = z.infer<typeof clientSchema>;
 
 export const neonAuthServerKeys = (): NeonAuthServerKeys & {
   isDevAuth: boolean;
@@ -50,16 +45,4 @@ export const neonAuthServerKeys = (): NeonAuthServerKeys & {
   }
 
   return { ...data, isDevAuth, isConfigured };
-};
-
-export const neonAuthClientKeys = (): NeonAuthClientKeys => {
-  const parsed = clientSchema.safeParse({
-    VITE_NEON_AUTH_URL: process.env.VITE_NEON_AUTH_URL,
-  });
-
-  if (!parsed.success) {
-    throw new Error("Invalid Neon Auth client env: VITE_NEON_AUTH_URL");
-  }
-
-  return parsed.data;
 };

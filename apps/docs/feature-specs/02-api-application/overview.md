@@ -2,7 +2,7 @@
 
 ## Status
 
-**Draft** — planning only; no implementation in this spec.
+**In progress** — `apps/api` ships `/health`, `/api/me`, user routes, and `@repo/neon-auth` verification. Shell integration continues in spec **07** (`feature/shell-auth`).
 
 ## Goal
 

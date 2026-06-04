@@ -1,8 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { Badge } from "@repo/design-system/components/ui/badge";
 import { Button } from "@repo/design-system/components/ui/button";
 import { Separator } from "@repo/design-system/components/ui/separator";
-import { useUser } from "../../../context/user-context";
+import { AuthNav } from "../../auth/components/auth-nav";
 
 const navItems = [
   { end: true, label: "Home", to: "/" },
@@ -12,8 +11,6 @@ const navItems = [
 ] as const;
 
 export function ShellLayout() {
-  const user = useUser();
-
   return (
     <div className="bg-background text-foreground mx-auto min-h-svh max-w-4xl px-6 py-8">
       <header className="flex flex-wrap items-end justify-between gap-4 pb-4">
@@ -23,9 +20,7 @@ export function ShellLayout() {
           </p>
           <h1 className="text-3xl font-semibold tracking-tight">Shop Shell</h1>
         </div>
-        <Badge className="text-sm" variant="secondary">
-          Signed in as {user.name}
-        </Badge>
+        <AuthNav />
       </header>
 
       <Separator className="mb-6" />

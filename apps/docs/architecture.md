@@ -42,12 +42,19 @@
 | `packages/mfe-contracts` | Generated/hand-written remote module types |
 | `packages/mfe-ui` | Shared UI above tokens |
 
-## Auth (v1 — mock)
+## Auth (shell + API)
 
-- No `packages/auth` and no auth remote.
-- Shell wraps app in `UserProvider` with `mockUser` from `@repo/mfe-shared`.
-- Remotes accept `RemoteSlotProps` (`user` prop only).
-- Production pattern (documented, not built): shell validates session once; remotes get read-only user or claims.
+- **Identity:** Neon Auth (browser SDK in shell). **Trust:** `apps/api` verifies every `GET /api/me` via `@repo/neon-auth` server helpers.
+- **Shell:** `ApiUserProvider` hydrates `UserProvider` from `/api/me` (`credentials: 'include'`). Sign-in / sign-out UI is spec **07** (T2).
+- **Remotes:** props-only `RemoteSlotProps.user` — no API, no Neon SDK, no `@repo/auth` (Clerk deprecated).
+- **Local demo:** API `DEV_AUTH_*` auto-authenticates without Neon UI; shell can omit `VITE_NEON_AUTH_URL`.
+- **Production-shaped:** shell `VITE_NEON_AUTH_URL` + API `NEON_AUTH_BASE_URL` + `CORS_ORIGIN` aligned to the same Neon Auth app.
+
+```txt
+sign-in (shell) → Neon Auth cookie → GET /api/me (api) → UserProvider → remotes
+```
+
+Detail: [feature-specs/07-shell-auth.md](./feature-specs/07-shell-auth.md), [feature-specs/02-api-application/auth-strategy.md](./feature-specs/02-api-application/auth-strategy.md).
 
 ## Code layout (conventions)
 
@@ -59,7 +66,7 @@ Documented in [AGENTS.md](./AGENTS.md#code-conventions). Summary:
 
 ## Routing
 
-- All URLs are shell routes: `/`, `/products`, `/cart`, `/interview`.
+- All URLs are shell routes: `/`, `/products`, `/cart`, `/interview`, `/sign-in`, `/sign-up` (auth UX — spec **07**; E2E gate: [07-auth-e2e-gate.md](./feature-specs/07-auth-e2e-gate.md)).
 - Remotes do not register top-level routes in v1.
 - Deep links hit the shell first; shell lazy-imports the remote component for that route.
 
@@ -83,6 +90,8 @@ Documented in [AGENTS.md](./AGENTS.md#code-conventions). Summary:
 - Remote configs: `apps/mfe-products/vite.config.ts`, `apps/mfe-cart/vite.config.ts`
 - Federation shared: `packages/mfe-shared/src/federation-shared.ts`
 - Shell routes: `apps/shell/src/app.tsx`
+- Shell auth: `apps/shell/src/features/auth/`
+- API session: `apps/api` + `packages/neon-auth`
 
 ## Retained platform packages (not in MFE demo v1)
 

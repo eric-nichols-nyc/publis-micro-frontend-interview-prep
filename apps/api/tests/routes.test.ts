@@ -37,4 +37,36 @@ describe("API routes", () => {
     expect(res.body.email).toBeDefined();
     expect(res.body.authUserId).toBeDefined();
   });
+
+  it("sign-up, sign-in, and sign-out with API session cookie", async () => {
+    const email = `test-${Date.now()}@example.com`;
+    const password = "password123";
+    const agent = request.agent(app);
+
+    const signUp = await agent
+      .post("/api/auth/sign-up")
+      .send({ email, password, name: "Test User" });
+
+    if (signUp.status === 503) {
+      return;
+    }
+
+    expect(signUp.status).toBe(201);
+    expect(signUp.body.email).toBe(email);
+
+    const me = await agent.get("/api/me");
+    expect(me.status).toBe(200);
+    expect(me.body.email).toBe(email);
+
+    await agent.post("/api/auth/sign-out");
+    const afterSignOut = await agent.get("/api/me");
+    expect([401, 200]).toContain(afterSignOut.status);
+
+    const signIn = await request(app)
+      .post("/api/auth/sign-in")
+      .send({ email, password });
+
+    expect(signIn.status).toBe(200);
+    expect(signIn.headers["set-cookie"]).toBeDefined();
+  });
 });

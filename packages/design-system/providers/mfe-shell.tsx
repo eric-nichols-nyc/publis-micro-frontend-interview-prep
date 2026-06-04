@@ -5,7 +5,7 @@ import { ThemeProvider } from "./theme";
 
 /**
  * Design-system root for Vite MFE shell — theme, tooltips, toasts only.
- * Omits auth provider; shell loads user via `ApiUserProvider` + API (`@repo/neon-auth`).
+ * Omits auth provider; shell loads user via `ApiUserProvider` + API session cookie.
  */
 export const MfeShellProvider = ({
   children,

@@ -33,6 +33,10 @@ bun run dev
 
 Open **http://localhost:5173**
 
+### Auth E2E (sign-up · sign-in · sign-out)
+
+Required before other MFE work. Configure Neon on shell + API (`DEV_AUTH_*` off). Follow the checklist in [apps/docs/feature-specs/07-auth-e2e-gate.md](apps/docs/feature-specs/07-auth-e2e-gate.md).
+
 ### Scripts
 
 | Command | Description |
