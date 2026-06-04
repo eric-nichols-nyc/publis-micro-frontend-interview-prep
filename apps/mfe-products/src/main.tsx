@@ -51,7 +51,13 @@ function StandaloneProductsApp() {
     return <p className="remote-standalone__banner">Loading catalog…</p>;
   }
 
-  return <ProductsPage products={products} user={mockUser} />;
+  return (
+    <ProductsPage
+      onAddToCart={() => {}}
+      products={products}
+      user={mockUser}
+    />
+  );
 }
 
 const root = document.getElementById("root");

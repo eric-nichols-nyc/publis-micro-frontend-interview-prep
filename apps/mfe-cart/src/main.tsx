@@ -2,8 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "@repo/mfe-shared/tokens.css";
 import "./styles.css";
-import { CartWidget } from "./cart-widget";
-import { mockUser } from "@repo/mfe-shared";
+import { StandaloneCartApp } from "./features/cart/components/standalone-cart-app";
 
 const root = document.getElementById("root");
 
@@ -14,7 +13,7 @@ if (root) {
         <p className="remote-standalone__banner">
           Standalone dev mode — normally loaded by the shell.
         </p>
-        <CartWidget user={mockUser} />
+        <StandaloneCartApp />
       </div>
     </StrictMode>
   );

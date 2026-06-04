@@ -1,12 +1,16 @@
-import type { RemoteSlotProps } from "@repo/mfe-shared";
-import { useCart } from "../hooks/use-cart";
+import type { CartRemoteProps } from "@repo/mfe-shared";
 import { CartEmptyState } from "./cart-empty-state";
 import { CartLineList } from "./cart-line-list";
 import { CartSummary } from "./cart-summary";
 import "../../../styles.css";
 
-export function CartWidget({ user }: RemoteSlotProps) {
-  const { lines, subtotal, updateQuantity, removeLine } = useCart();
+export function CartWidget({
+  user,
+  lines,
+  subtotal,
+  onUpdateQuantity,
+  onRemoveLine,
+}: CartRemoteProps) {
   const isEmpty = lines.length === 0;
 
   return (
@@ -23,8 +27,8 @@ export function CartWidget({ user }: RemoteSlotProps) {
         <>
           <CartLineList
             lines={lines}
-            onQuantityChange={updateQuantity}
-            onRemove={removeLine}
+            onQuantityChange={onUpdateQuantity}
+            onRemove={onRemoveLine}
           />
           <CartSummary subtotal={subtotal} />
         </>

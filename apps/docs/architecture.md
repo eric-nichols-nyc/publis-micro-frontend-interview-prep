@@ -77,6 +77,12 @@ Documented in [AGENTS.md](./AGENTS.md#code-conventions). Summary:
 - Prod: `VITE_MFE_PRODUCTS_URL`, `VITE_MFE_CART_URL` on shell build
 - Shared: `react`, `react-dom` as **singletons** via `federationShared`
 
+## Cross-MFE cart (spec **08**)
+
+Product and cart remotes do not import each other. The shell owns in-memory cart state (`cart-session`) and passes callbacks into `mfe-products` and cart lines into `mfe-cart`.
+
+Full diagrams and sequence flows: [feature-specs/08-cart-flow/architecture.md](./feature-specs/08-cart-flow/architecture.md).
+
 ## Failure handling
 
 | Failure | Behavior | Location |
@@ -91,6 +97,7 @@ Documented in [AGENTS.md](./AGENTS.md#code-conventions). Summary:
 - Federation shared: `packages/mfe-shared/src/federation-shared.ts`
 - Shell routes: `apps/shell/src/app.tsx`
 - Shell auth: `apps/shell/src/features/auth/`
+- Shell cart session: `apps/shell/src/features/cart-session/`
 - API session: `apps/api` + `packages/neon-auth`
 
 ## Retained platform packages (not in MFE demo v1)

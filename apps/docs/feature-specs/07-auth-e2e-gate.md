@@ -2,7 +2,7 @@
 
 ## Status
 
-**Required** — no further MFE feature work until this gate passes on branch `feature/shell-auth` (see parent spec [07-shell-auth.md](./07-shell-auth.md)).
+**Passed** — gate complete (2026-06-04). Next: [08-cart-flow phase 1](./08-cart-flow/phase-1-cross-mfe.md). Parent: [07-shell-auth.md](./07-shell-auth.md) (**Completed**).
 
 ## Why this exists
 

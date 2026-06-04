@@ -8,8 +8,8 @@ declare module "mfe_products/ProductsPage" {
 
 declare module "mfe_cart/CartWidget" {
   import type { ComponentType } from "react";
-  import type { RemoteSlotProps } from "@repo/mfe-shared";
+  import type { CartRemoteProps } from "@repo/mfe-shared";
 
-  const CartWidget: ComponentType<RemoteSlotProps>;
+  const CartWidget: ComponentType<CartRemoteProps>;
   export default CartWidget;
 }

@@ -5,7 +5,11 @@ import { ProductList } from "./product-list";
 import { ProductSearch } from "./product-search";
 import "../../../styles.css";
 
-export function ProductsPage({ user, products }: ProductsRemoteProps) {
+export function ProductsPage({
+  user,
+  products,
+  onAddToCart,
+}: ProductsRemoteProps) {
   const { query, setQuery, filteredProducts } = useProductSearch(products);
   const showEmpty = filteredProducts.length === 0;
 
@@ -26,7 +30,7 @@ export function ProductsPage({ user, products }: ProductsRemoteProps) {
       {showEmpty ? (
         <CatalogEmptyState query={query} />
       ) : (
-        <ProductList products={filteredProducts} />
+        <ProductList onAddToCart={onAddToCart} products={filteredProducts} />
       )}
     </section>
   );

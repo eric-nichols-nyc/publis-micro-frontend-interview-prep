@@ -1,6 +1,7 @@
 import type { ProductsRemoteProps } from "@repo/mfe-shared";
 import { Suspense } from "react";
 import { useUser } from "../../../context/user-context";
+import { useCartSession } from "../../cart-session/components/cart-session-provider";
 import { RemoteErrorBoundary } from "../../shell-core/components/remote-error-boundary";
 import { loadRemote } from "../../shell-core/lib/load-remote";
 import { useProducts } from "../hooks/use-products";
@@ -12,6 +13,7 @@ const ProductsPage = loadRemote<ProductsRemoteProps>(
 
 export function ProductsRoutePage() {
   const user = useUser();
+  const { addToCart } = useCartSession();
   const { status, products, errorMessage, reloadProducts } = useProducts();
 
   if (status === "loading") {
@@ -37,7 +39,11 @@ export function ProductsRoutePage() {
   return (
     <RemoteErrorBoundary label="Products">
       <Suspense fallback={<p className="shell-loading">Loading products…</p>}>
-        <ProductsPage products={products} user={user} />
+        <ProductsPage
+          onAddToCart={(productId) => addToCart(productId, products)}
+          products={products}
+          user={user}
+        />
       </Suspense>
     </RemoteErrorBoundary>
   );

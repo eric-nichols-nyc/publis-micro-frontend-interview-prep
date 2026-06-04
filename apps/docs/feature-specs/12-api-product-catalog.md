@@ -58,7 +58,7 @@ Note: Shell route `/products` may remain behind `AuthRequired` (spec **07**); ca
 
 ## Out of scope
 
-- Cart line items referencing DB products (cart remains mock/client state — see **08**)
+- Cart persistence (spec **08** [phase 1](./08-cart-flow/phase-1-cross-mfe.md) shell state; [phase 2](./08-cart-flow/phase-2-persisted-api.md) DB cart)
 - Admin CRUD (`POST` / `PATCH` / `DELETE` products)
 - Server-side search, pagination, filtering
 - Image upload / blob storage / custom CDN (URLs only in v1)

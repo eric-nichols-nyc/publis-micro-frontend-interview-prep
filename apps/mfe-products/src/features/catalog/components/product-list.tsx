@@ -3,13 +3,15 @@ import { useState } from "react";
 
 type ProductListProps = {
   products: Product[];
+  onAddToCart?: (productId: string) => void;
 };
 
 type ProductCardProps = {
   product: Product;
+  onAddToCart?: (productId: string) => void;
 };
 
-function ProductCard({ product }: ProductCardProps) {
+function ProductCard({ product, onAddToCart }: ProductCardProps) {
   const [imageFailed, setImageFailed] = useState(false);
 
   return (
@@ -35,16 +37,31 @@ function ProductCard({ product }: ProductCardProps) {
         <span className="product-card__name">{product.name}</span>
         <span className="product-card__category">{product.category}</span>
       </div>
-      <strong className="product-card__price">${product.price}</strong>
+      <div className="product-card__footer">
+        <strong className="product-card__price">${product.price}</strong>
+        {onAddToCart ? (
+          <button
+            className="product-card__add"
+            onClick={() => onAddToCart(product.id)}
+            type="button"
+          >
+            Add to cart
+          </button>
+        ) : null}
+      </div>
     </li>
   );
 }
 
-export function ProductList({ products }: ProductListProps) {
+export function ProductList({ products, onAddToCart }: ProductListProps) {
   return (
     <ul className="product-list">
       {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+        <ProductCard
+          key={product.id}
+          onAddToCart={onAddToCart}
+          product={product}
+        />
       ))}
     </ul>
   );

@@ -1,7 +1,1 @@
-export type CartLine = {
-  id: string;
-  productId: string;
-  name: string;
-  price: number;
-  quantity: number;
-};
+export type { CartLine } from "@repo/mfe-shared";

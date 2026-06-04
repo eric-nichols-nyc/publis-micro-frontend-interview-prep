@@ -31,8 +31,14 @@ Split the frontend by **business domain** so teams can develop, deploy, and scal
 
 ### Auth
 
-- **This repo:** mock user; shell `UserProvider`; `user` prop on remotes.
+- **This repo:** Neon Auth in shell; profile from `GET /api/me`; `user` prop on remotes (spec **07**).
 - **Say in interview:** real auth stays in the shell; remotes don’t embed login.
+
+### Cross-MFE cart (shell orchestration)
+
+- **This repo:** shell `CartSessionProvider` owns cart lines; products remote calls `onAddToCart`; cart remote renders props only.
+- **Say in interview:** the host integrates teams — no shared Zustand package across remotes, no `mfe-products` → `mfe-cart` imports.
+- **Diagrams:** [feature-specs/08-cart-flow/architecture.md](./feature-specs/08-cart-flow/architecture.md)
 
 ### Performance
 
@@ -51,7 +57,7 @@ Split the frontend by **business domain** so teams can develop, deploy, and scal
 | Question | Where |
 |----------|--------|
 | When not to use MFEs? | PRD non-goals; domain split must justify cost |
-| Share auth / state? | Shell provider + `RemoteSlotProps` |
+| Share auth / state? | Shell provider + `RemoteSlotProps`; cart via `cart-session` + callbacks (spec **08**) |
 | Routing / deep links? | `apps/shell/src/app.tsx` |
 | Duplicate React? | `federation-shared.ts` |
 | Independent deploy? | Per-app `dist/`, env remote URLs on shell |

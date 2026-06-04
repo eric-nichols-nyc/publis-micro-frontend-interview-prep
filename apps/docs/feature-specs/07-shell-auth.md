@@ -2,7 +2,7 @@
 
 ## Status
 
-**In progress** — implementation through T2.3 done. **Blocked on [07-auth-e2e-gate.md](./07-auth-e2e-gate.md)** until sign-up, sign-in, and sign-out pass manually with Neon (not `DEV_AUTH_*`).
+**Completed** — T2.3 implemented; [07-auth-e2e-gate.md](./07-auth-e2e-gate.md) passed (sign-up, sign-in, sign-out with Neon; `DEV_AUTH_*` off).
 
 ## Goal
 
@@ -14,11 +14,9 @@ Shell owns the full auth UX: Neon Auth **sign-up**, **sign-in**, and **sign-out*
 2. As a **signed-in user**, I want the shell nav to show my name and **sign out**.
 3. As an **interviewer**, I want the host to demonstrate “session in shell, trust in API, props to remotes” with working code.
 
-## Auth E2E gate (required before other features)
+## Auth E2E gate
 
-**Spec:** [07-auth-e2e-gate.md](./07-auth-e2e-gate.md)
-
-Do not start new MFE features until sign-up, sign-in, and sign-out pass that checklist with real Neon env.
+**Spec:** [07-auth-e2e-gate.md](./07-auth-e2e-gate.md) — **passed**. Next feature: **08** cart flow phase 1.
 
 ## Requirements
 
@@ -37,9 +35,9 @@ Do not start new MFE features until sign-up, sign-in, and sign-out pass that che
 - [x] Sign-up route `/sign-up` with `AuthView pathname="sign-up"`
 - [x] Sign-in route `/sign-in` with `AuthView pathname="sign-in"`
 - [x] Nav: Sign in / Sign up (unsigned) and Sign out (signed in, Neon only)
-- [ ] `RemoteSlotProps.user` populated from authenticated session on `/products` and `/cart` (manual verify)
-- [ ] Remotes unchanged — props-only, no auth SDK in remotes
-- [ ] `@repo/neon-auth` `NeonAuthProvider` wraps Neon Auth UI provider when configured (passthrough when not)
+- [x] `RemoteSlotProps.user` populated from authenticated session on `/products` and `/cart` (manual verify)
+- [x] Remotes unchanged — props-only, no auth SDK in remotes
+- [x] `@repo/neon-auth` `NeonAuthProvider` wraps Neon Auth UI provider when configured (passthrough when not)
 
 ## Out of scope
 
@@ -178,9 +176,9 @@ packages/neon-auth/
 
 **Verify:** Sign-out only when Neon configured (hidden for API-only dev auth).
 
-### T2.4 — Auth E2E gate (human — required)
+### T2.4 — Auth E2E gate (human — done)
 
-Follow [07-auth-e2e-gate.md](./07-auth-e2e-gate.md). Mark complete when sign-up, sign-in, and sign-out all pass.
+- [x] [07-auth-e2e-gate.md](./07-auth-e2e-gate.md) — sign-up, sign-in, sign-out passed with Neon
 
 ## Agent implementation prompt
 

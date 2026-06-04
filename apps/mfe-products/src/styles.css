@@ -106,8 +106,32 @@
   font-size: 0.75rem;
 }
 
+.product-card__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--mfe-space-2);
+  flex-shrink: 0;
+}
+
 .product-card__price {
   font-variant-numeric: tabular-nums;
+}
+
+.product-card__add {
+  border: none;
+  border-radius: var(--mfe-radius);
+  background: var(--mfe-color-accent);
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: var(--mfe-space-2) var(--mfe-space-3);
+  white-space: nowrap;
+}
+
+.product-card__add:hover {
+  background: var(--mfe-color-accent-hover);
 }
 
 .catalog-search {
