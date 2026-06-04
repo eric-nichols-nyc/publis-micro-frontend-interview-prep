@@ -1,6 +1,5 @@
-import { mockUser } from "@repo/mfe-shared";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { UserProvider } from "./context/user-context";
+import { ApiUserProvider } from "./features/auth/components/api-user-provider";
 import { CartRoutePage } from "./features/cart-route/components/cart-route-page";
 import { HomePage } from "./features/home/components/home-page";
 import { InterviewPage } from "./features/interview/components/interview-page";
@@ -9,7 +8,7 @@ import { ShellLayout } from "./features/shell-chrome/components/shell-layout";
 
 export function App() {
   return (
-    <UserProvider user={mockUser}>
+    <ApiUserProvider>
       <BrowserRouter>
         <Routes>
           <Route element={<ShellLayout />} path="/">
@@ -21,6 +20,6 @@ export function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-    </UserProvider>
+    </ApiUserProvider>
   );
 }
