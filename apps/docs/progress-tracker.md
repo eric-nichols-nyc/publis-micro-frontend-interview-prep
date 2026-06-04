@@ -2,7 +2,7 @@
 
 ## Current Goal
 
-Lean monorepo: MFE demo + retained platform packages (design-system, auth, database).
+Feature **03** (shell design system) — review and approve before implementation.
 
 ## In Progress
 
@@ -10,19 +10,18 @@ Lean monorepo: MFE demo + retained platform packages (design-system, auth, datab
 
 ## Completed
 
-- Vite Module Federation demo: shell, mfe-products, mfe-cart
-- `packages/mfe-shared`
-- Agent docs under `apps/docs/`
-- Code conventions (feature folders, kebab-case files)
-- Removed unused apps and packages (kept design-system, auth, database)
-- Removed root `docs/` site, Mintlify leftovers in `apps/docs/`
+- Feature folder refactor ([02-feature-folder-refactor.md](./feature-specs/02-feature-folder-refactor.md)) — T1–T4
+- MFE v1 baseline ([01-mfe-v1-baseline.md](./feature-specs/01-mfe-v1-baseline.md))
+- Lean monorepo + `apps/docs/` agent hub
+- Code conventions documented (feature folders, kebab-case)
 
 ## Next Up
 
-- Refactor shell/remotes to `src/features/` + kebab-case files
-- Optional: wire `@repo/design-system` or `@repo/auth` into shell via feature spec
-- Feature specs for E2E, prod remote URLs
+1. Review and approve **03-shell-design-system**
+2. Continue order: 04 → 05 → (08, 07, 06 optional) → 09 → 10
 
 ## Open Questions
 
-- Single mega-spec vs multiple feature specs for future work?
+- Implement **06** (third remote checkout)?
+- **07** Clerk: do you have env keys ready?
+- Approve **08** for cross-MFE cart before or after polishing 04/05 in isolation?

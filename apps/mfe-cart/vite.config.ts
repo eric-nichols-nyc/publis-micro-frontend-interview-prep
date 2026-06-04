@@ -8,9 +8,10 @@ export default defineConfig({
     react(),
     federation({
       name: "mfe_cart",
+      dts: false,
       filename: "remoteEntry.js",
       exposes: {
-        "./CartWidget": "./src/CartWidget.tsx",
+        "./CartWidget": "./src/cart-widget.tsx",
       },
       shared: federationShared,
     }),

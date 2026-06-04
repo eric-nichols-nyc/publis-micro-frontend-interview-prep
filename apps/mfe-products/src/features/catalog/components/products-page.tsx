@@ -1,5 +1,5 @@
 import type { RemoteSlotProps } from "@repo/mfe-shared";
-import "./styles.css";
+import "../../../styles.css";
 
 const products = [
   { id: "sku_1", name: "Trail Runner Pack", price: 89 },

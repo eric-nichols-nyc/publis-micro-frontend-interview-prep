@@ -1,7 +1,11 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { federation } from "@module-federation/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import { federationShared } from "@repo/mfe-shared/federation-shared";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const productsRemoteEntry =
   process.env.VITE_MFE_PRODUCTS_URL ??
@@ -14,6 +18,7 @@ export default defineConfig({
     react(),
     federation({
       name: "shell",
+      dts: false,
       remotes: {
         mfe_products: {
           type: "module",
@@ -41,6 +46,11 @@ export default defineConfig({
   preview: {
     port: 5173,
     strictPort: true,
+  },
+  resolve: {
+    alias: {
+      "@repo/design-system": path.resolve(__dirname, "../../packages/design-system"),
+    },
   },
   build: {
     target: "esnext",

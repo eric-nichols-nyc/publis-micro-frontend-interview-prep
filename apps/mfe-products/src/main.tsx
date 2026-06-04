@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "@repo/mfe-shared/tokens.css";
 import "./styles.css";
-import { ProductsPage } from "./ProductsPage";
+import { ProductsPage } from "./products-page";
 import { mockUser } from "@repo/mfe-shared";
 
 const root = document.getElementById("root");

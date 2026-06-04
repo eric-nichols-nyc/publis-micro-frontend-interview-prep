@@ -21,15 +21,13 @@ A small, runnable monorepo for practicing micro-frontend interview questions: in
 4. Visit `/cart` — federated cart loads.
 5. (Demo) Stop cart remote — `/cart` shows fallback; shell still works.
 
-## Non-goals (v1)
+## Non-goals (baseline — see feature specs for phased additions)
 
-- Real authentication (OAuth, Clerk, sessions API)
 - SSR / Next.js host
-- Database or API backend
-- Full design system (shadcn) integration
-- E2E test suite
-- Production deployment automation
-- Removing all legacy next-forge folders (tracked separately)
+- Database-backed catalog (spec **08** uses mock data; DB is future)
+- Production deployment automation (spec **09** documents env URLs only)
+
+Phased features (specs in `feature-specs/`): folder refactor (**02**), design system shell (**03**), catalog (**04**), cart (**05**), optional checkout remote (**06**), Clerk auth (**07**), cross-MFE cart (**08**), prod env (**09**), E2E (**10**).
 
 ## Technical direction
 

@@ -1,0 +1,69 @@
+# Feature Spec: Production remote URLs
+
+## Status
+
+**Draft** — approve when preparing deploy / CI story.
+
+## Goal
+
+Document and implement environment-specific remote URLs for shell builds and a local preview workflow that mirrors production federation loading.
+
+## User story
+
+As a deployer, I want the shell to load remotes from staging/production URLs via env vars so each MFE deploys independently.
+
+## Requirements
+
+- [ ] `apps/shell/.env.example` documents `VITE_MFE_PRODUCTS_URL`, `VITE_MFE_CART_URL` (and checkout if **06** exists)
+- [ ] `vite.config.ts` reads env with sensible dev defaults (already partial — verify and document)
+- [ ] `apps/docs/architecture.md` section: deploy order (deploy remotes → deploy shell)
+- [ ] Script or README steps: `build` remotes → `preview` → `build` shell with env pointing at preview URLs
+- [ ] Optional: `turbo.json` task notes for CI matrix per app
+
+## Out of scope
+
+- Actual Vercel/AWS deploy configs
+- Version negotiation / runtime manifest pinning (mention as future)
+
+## Architecture impact
+
+- Apps: `shell` (primary), docs
+- Packages: none
+- New package: no
+
+## Acceptance criteria
+
+- [ ] Shell build with custom env URLs succeeds when preview URLs valid
+- [ ] README “Production remote URLs” matches implemented env names
+- [ ] Interview guide mentions CDN caching for `remoteEntry.js`
+
+## Implementation tasks
+
+### T1 — Env example + config audit
+
+Files:
+
+- `apps/shell/.env.example`
+- `apps/shell/vite.config.ts` (comments only if already correct)
+
+Verify:
+
+- Documented vars match vite config
+
+### T2 — Preview workflow in README
+
+Files:
+
+- `README.md`, `apps/docs/interview-guide.md`
+
+Verify:
+
+- Another developer can follow steps locally
+
+## Agent implementation prompt
+
+Implement **T1 only** from `apps/docs/feature-specs/09-prod-remote-env.md`.
+
+Before coding: read `apps/docs/AGENTS.md`, `progress-tracker.md`, this spec.
+
+After coding: update `progress-tracker.md`; stop before T2.

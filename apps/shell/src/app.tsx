@@ -1,11 +1,11 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { ShellLayout } from "./components/shell-layout";
-import { UserProvider } from "./context/user-context";
-import { CartRoutePage } from "./pages/cart-page";
-import { HomePage } from "./pages/home-page";
-import { InterviewPage } from "./pages/interview-page";
-import { ProductsRoutePage } from "./pages/products-page";
 import { mockUser } from "@repo/mfe-shared";
+import { UserProvider } from "./context/user-context";
+import { CartRoutePage } from "./features/cart-route/components/cart-route-page";
+import { HomePage } from "./features/home/components/home-page";
+import { InterviewPage } from "./features/interview/components/interview-page";
+import { ProductsRoutePage } from "./features/products-route/components/products-route-page";
+import { ShellLayout } from "./features/shell-chrome/components/shell-layout";
 
 export function App() {
   return (

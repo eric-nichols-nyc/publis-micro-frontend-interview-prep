@@ -51,9 +51,8 @@
 Documented in [AGENTS.md](./AGENTS.md#code-conventions). Summary:
 
 - **`src/features/<feature-name>/`** — domain UI and logic per app (`components/`, `hooks/`, `lib/`).
-- **`src/pages/`** (shell) — thin route files that import from features.
+- **`app.tsx`** (shell) — router wiring; imports route components from `features/`.
 - **kebab-case** file and folder names; **PascalCase** React component names inside those files.
-- Baseline implementation may still use `src/pages/` and `src/components/` until refactored; new code follows the feature-folder pattern.
 
 ## Routing
 
@@ -72,8 +71,8 @@ Documented in [AGENTS.md](./AGENTS.md#code-conventions). Summary:
 
 | Failure | Behavior | Location |
 |---------|----------|----------|
-| Remote down / import fails | “Could not load” fallback | `apps/shell/src/lib/load-remote.tsx` |
-| Remote throws in render | “Unavailable” + retry | `apps/shell/src/components/remote-error-boundary.tsx` |
+| Remote down / import fails | “Could not load” fallback | `apps/shell/src/features/shell-core/lib/load-remote.tsx` |
+| Remote throws in render | “Unavailable” + retry | `apps/shell/src/features/shell-core/components/remote-error-boundary.tsx` |
 
 ## Key files
 

@@ -1,2 +1,2 @@
-export * from './compiled-types/src/CartWidget';
-export { default } from './compiled-types/src/CartWidget';
+export * from './compiled-types/src/cart-widget';
+export { default } from './compiled-types/src/cart-widget';

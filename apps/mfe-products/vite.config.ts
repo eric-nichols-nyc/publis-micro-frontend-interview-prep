@@ -8,9 +8,10 @@ export default defineConfig({
     react(),
     federation({
       name: "mfe_products",
+      dts: false,
       filename: "remoteEntry.js",
       exposes: {
-        "./ProductsPage": "./src/ProductsPage.tsx",
+        "./ProductsPage": "./src/products-page.tsx",
       },
       shared: federationShared,
     }),

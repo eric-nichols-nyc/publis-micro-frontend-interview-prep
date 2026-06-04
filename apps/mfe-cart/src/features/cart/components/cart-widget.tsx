@@ -1,5 +1,5 @@
 import type { RemoteSlotProps } from "@repo/mfe-shared";
-import "./styles.css";
+import "../../../styles.css";
 
 const cartItems = [
   { id: "line_1", name: "Trail Runner Pack", qty: 1 },

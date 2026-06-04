@@ -52,6 +52,7 @@
 }
 
 .cart-line {
+  background: var(--mfe-color-bg);
   padding: var(--mfe-space-3) var(--mfe-space-4);
   border: 1px solid var(--mfe-color-border);
   border-radius: var(--mfe-radius);

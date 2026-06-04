@@ -1,7 +1,7 @@
 import { Suspense } from "react";
-import { RemoteErrorBoundary } from "../components/remote-error-boundary";
-import { useUser } from "../context/user-context";
-import { loadRemote } from "../lib/load-remote";
+import { useUser } from "../../../context/user-context";
+import { RemoteErrorBoundary } from "../../shell-core/components/remote-error-boundary";
+import { loadRemote } from "../../shell-core/lib/load-remote";
 
 const CartWidget = loadRemote(
   () => import("mfe_cart/CartWidget"),
