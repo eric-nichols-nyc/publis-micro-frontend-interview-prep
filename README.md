@@ -44,6 +44,8 @@ Required before other MFE work. Configure Neon on shell + API (`DEV_AUTH_*` off)
 | `bun run dev` | Shell + remotes + API |
 | `bun run dev:api` | API only |
 | `bun run build` | Build all workspace packages with a `build` script |
+| `bun run build:remotes` | Build `mfe-products` + `mfe-cart` only |
+| `bun run preview:remotes` | Preview built remotes on :5174 / :5175 |
 | `bun run typecheck` | Typecheck across workspace |
 | `bun run check` / `fix` | Lint and format |
 | `bun run migrate` | Prisma migrate (`packages/database`) |
@@ -52,6 +54,39 @@ Required before other MFE work. Configure Neon on shell + API (`DEV_AUTH_*` off)
 ### Failure demo
 
 Stop only `mfe-cart`, visit http://localhost:5173/cart — fallback UI; shell nav still works.
+
+### Production remote URLs
+
+The shell loads remotes at **build time** via `VITE_MFE_PRODUCTS_URL` and `VITE_MFE_CART_URL` (see `apps/shell/.env.example`). Each value must be the full URL to that remote’s `remoteEntry.js`.
+
+| Variable | Dev default | App |
+|----------|-------------|-----|
+| `VITE_MFE_PRODUCTS_URL` | `http://localhost:5174/remoteEntry.js` | `mfe-products` |
+| `VITE_MFE_CART_URL` | `http://localhost:5175/remoteEntry.js` | `mfe-cart` |
+| `VITE_API_BASE_URL` | `http://localhost:3001` | `api` |
+
+**Deploy order:** build and deploy **remotes first** (each serves `remoteEntry.js` + chunks), then build the **shell** with env vars pointing at those URLs. In production, cache `remoteEntry.js` carefully — it is the federation manifest (see [interview guide](apps/docs/interview-guide.md)).
+
+**Local preview (production-like federation):**
+
+```sh
+# 1. Build remotes
+bun run build:remotes
+
+# 2. Serve built remotes (keep running; ports 5174 + 5175)
+bun run preview:remotes
+
+# 3. In another terminal — build shell against preview URLs
+VITE_MFE_PRODUCTS_URL=http://localhost:5174/remoteEntry.js \
+VITE_MFE_CART_URL=http://localhost:5175/remoteEntry.js \
+VITE_API_BASE_URL=http://localhost:3001 \
+  bun run build --filter=shell
+
+# 4. Preview shell (API should be running for auth/catalog/cart)
+cd apps/shell && bun run preview
+```
+
+Open **http://localhost:5173** and exercise `/products` and `/cart`.
 
 ## Documentation
 

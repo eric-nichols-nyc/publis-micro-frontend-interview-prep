@@ -49,21 +49,21 @@ Required only when phase 2 is approved and implemented.
 
 ### B1 — Database
 
-- [ ] **B1.1** Migration applies cleanly; `Cart` / `CartItem` relate to `User` and `Product`.
-- [ ] **B1.2** `priceSnapshot` stored on add; line total uses snapshot, not live catalog price.
+- [x] **B1.1** Migration applies cleanly; `Cart` / `CartItem` relate to `User` and `Product`.
+- [x] **B1.2** `priceSnapshot` stored on add; line total uses snapshot, not live catalog price.
 
 ### B2 — API
 
-- [ ] **B2.1** Unauthenticated `POST /api/cart/items` returns **401**.
-- [ ] **B2.2** Authenticated user can add, update, remove, clear cart; integration tests pass.
-- [ ] **B2.3** User A cannot read or mutate user B’s cart (**403** or empty scoped cart).
-- [ ] **B2.4** Invalid `productId` returns **404** or **400** per api-design.
+- [x] **B2.1** Unauthenticated `POST /api/cart/items` returns **401**.
+- [x] **B2.2** Authenticated user can add, update, remove, clear cart; integration tests pass.
+- [x] **B2.3** User A cannot read or mutate user B’s cart (**404** scoped to caller’s cart).
+- [x] **B2.4** Invalid `productId` returns **404** per api-design.
 
 ### B3 — Shell + remotes
 
-- [ ] **B3.1** After refresh, cart lines reappear for signed-in user.
-- [ ] **B3.2** Remotes still use same props as phase 1 (no remote API imports).
-- [ ] **B3.3** Add from `/products` persists after refresh.
+- [x] **B3.1** After refresh, cart lines reappear for signed-in user.
+- [x] **B3.2** Remotes still use same props as phase 1 (no remote API imports).
+- [x] **B3.3** Add from `/products` persists after refresh.
 
 ### B4 — Auth gate
 

@@ -42,7 +42,9 @@ Split the frontend by **business domain** so teams can develop, deploy, and scal
 
 ### Performance
 
-- Lazy route → lazy remote import; small `exposes`; CDN `remoteEntry.js` in prod.
+- Lazy route → lazy remote import; small `exposes`.
+- **Production remotes:** shell build sets `VITE_MFE_PRODUCTS_URL` / `VITE_MFE_CART_URL` to each team’s `remoteEntry.js` URL (see spec **09**, root README).
+- **CDN caching:** `remoteEntry.js` is the federation manifest — it lists exposed modules and chunk URLs. Aggressive long-term caching without a versioning strategy breaks deploys when remotes ship new chunks. Common patterns: short TTL or immutable cache-bust on `remoteEntry.js`, longer cache on hashed chunk assets, and compatible `shared` dependency ranges across host/remotes.
 
 ### When a remote fails
 

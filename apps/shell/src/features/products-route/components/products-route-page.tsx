@@ -40,7 +40,7 @@ export function ProductsRoutePage() {
     <RemoteErrorBoundary label="Products">
       <Suspense fallback={<p className="shell-loading">Loading products…</p>}>
         <ProductsPage
-          onAddToCart={(productId) => addToCart(productId, products)}
+          onAddToCart={(productId) => void addToCart(productId, products)}
           products={products}
           user={user}
         />

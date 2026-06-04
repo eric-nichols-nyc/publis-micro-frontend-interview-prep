@@ -45,7 +45,7 @@ Detail: [phase-2-persisted-api.md](./phase-2-persisted-api.md)
 | **P2-T4** | Mutations + loading/error UI | `use-shell-cart.ts`, route pages |
 | **P2-T5** | API design doc + index status | `02-api-application/api-design.md`, `00-index.md` |
 
-**Phase 2 completion:** [acceptance-criteria.md](./acceptance-criteria.md#phase-2--persisted-api) + auth gate satisfied.
+**Phase 2 completion:** ✅ [acceptance-criteria.md](./acceptance-criteria.md#phase-2--persisted-api) + auth gate satisfied (2026-06-04).
 
 ---
 

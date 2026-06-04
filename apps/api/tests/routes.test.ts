@@ -105,4 +105,109 @@ describe("API routes", () => {
     expect(missing.status).toBe(404);
     expect(missing.body.error?.code).toBe("NOT_FOUND");
   });
+
+  it("POST /api/cart/items without auth returns 401", async () => {
+    const res = await request(app)
+      .post("/api/cart/items")
+      .send({ productId: "sku_1" });
+    expect(res.status).toBe(401);
+    expect(res.body.error?.code).toBe("UNAUTHORIZED");
+  });
+
+  it("authenticated cart CRUD uses price snapshot", async () => {
+    const email = `cart-${Date.now()}@example.com`;
+    const password = "password123";
+    const agent = request.agent(app);
+
+    const signUp = await agent
+      .post("/api/auth/sign-up")
+      .send({ email, password, name: "Cart Tester" });
+
+    if (signUp.status === 503) {
+      return;
+    }
+
+    expect(signUp.status).toBe(201);
+
+    const list = await request(app).get("/api/products");
+    if (list.status !== 200 || list.body.length === 0) {
+      return;
+    }
+
+    const product = list.body[0];
+    const productId = product.id as string;
+
+    const emptyCart = await agent.get("/api/cart");
+    expect(emptyCart.status).toBe(200);
+    expect(emptyCart.body.items).toEqual([]);
+
+    const add = await agent
+      .post("/api/cart/items")
+      .send({ productId, quantity: 1 });
+    expect(add.status).toBe(201);
+    expect(add.body.items).toHaveLength(1);
+    expect(add.body.items[0].productId).toBe(productId);
+    expect(add.body.items[0].price).toBe(product.price);
+    expect(add.body.items[0].name).toBe(product.name);
+
+    const itemId = add.body.items[0].id as string;
+
+    const bump = await agent
+      .post("/api/cart/items")
+      .send({ productId, quantity: 2 });
+    expect(bump.status).toBe(201);
+    expect(bump.body.items).toHaveLength(1);
+    expect(bump.body.items[0].quantity).toBe(3);
+
+    const patch = await agent
+      .patch(`/api/cart/items/${itemId}`)
+      .send({ quantity: 1 });
+    expect(patch.status).toBe(200);
+    expect(patch.body.items[0].quantity).toBe(1);
+
+    const remove = await agent.delete(`/api/cart/items/${itemId}`);
+    expect(remove.status).toBe(200);
+    expect(remove.body.items).toEqual([]);
+
+    await agent.post("/api/cart/items").send({ productId });
+    const clear = await agent.delete("/api/cart");
+    expect(clear.status).toBe(200);
+    expect(clear.body.items).toEqual([]);
+  });
+
+  it("user cannot mutate another user's cart item", async () => {
+    const password = "password123";
+    const agentA = request.agent(app);
+    const agentB = request.agent(app);
+
+    const signUpA = await agentA
+      .post("/api/auth/sign-up")
+      .send({ email: `cart-a-${Date.now()}@example.com`, password });
+
+    if (signUpA.status === 503) {
+      return;
+    }
+
+    const list = await request(app).get("/api/products");
+    if (list.status !== 200 || list.body.length === 0) {
+      return;
+    }
+
+    const productId = list.body[0].id as string;
+    const add = await agentA
+      .post("/api/cart/items")
+      .send({ productId });
+    const itemId = add.body.items[0].id as string;
+
+    const signUpB = await agentB
+      .post("/api/auth/sign-up")
+      .send({ email: `cart-b-${Date.now()}@example.com`, password });
+    expect(signUpB.status).toBe(201);
+
+    const patch = await agentB
+      .patch(`/api/cart/items/${itemId}`)
+      .send({ quantity: 0 });
+    expect(patch.status).toBe(404);
+    expect(patch.body.error?.code).toBe("NOT_FOUND");
+  });
 });

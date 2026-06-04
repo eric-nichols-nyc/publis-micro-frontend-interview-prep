@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
+    "build:remotes": "turbo build --filter=mfe-products --filter=mfe-cart",
+    "preview:remotes": "turbo preview --filter=mfe-products --filter=mfe-cart",
     "dev": "turbo dev --filter=mfe-products --filter=mfe-cart --filter=shell --filter=api",
     "dev:api": "turbo dev --filter=api",
     "check": "ultracite check",

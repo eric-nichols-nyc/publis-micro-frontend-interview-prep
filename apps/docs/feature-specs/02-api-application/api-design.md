@@ -327,6 +327,131 @@ Invalid param → `400 VALIDATION_ERROR`.
 
 ---
 
+## GET /api/cart
+
+**Purpose:** Return the authenticated user’s active cart and line items (empty shell when none exists).
+
+### Request
+
+- Method: `GET`
+- Path: `/api/cart`
+- Auth: **required**
+
+### Response — 200 OK
+
+```json
+{
+  "id": "clxyz123",
+  "items": [
+    {
+      "id": "clitem456",
+      "productId": "sku_1",
+      "name": "Trail Runner Pack",
+      "price": 89,
+      "quantity": 2
+    }
+  ]
+}
+```
+
+When no active cart exists yet, `id` is `null` and `items` is `[]`.
+
+### Authorization
+
+- Scoped to the caller’s DB user only.
+
+---
+
+## POST /api/cart/items
+
+**Purpose:** Add a product to the active cart or merge quantity if the line already exists.
+
+### Request
+
+- Method: `POST`
+- Path: `/api/cart/items`
+- Auth: **required**
+- Body:
+
+```json
+{
+  "productId": "sku_1",
+  "quantity": 1
+}
+```
+
+| Field | Required | Rules |
+|-------|----------|-------|
+| `productId` | Yes | non-empty string; must exist in `Product` |
+| `quantity` | No | integer ≥ 1; default `1` |
+
+### Response — 201 Created
+
+Same shape as `GET /api/cart`. Line `price` is **`priceSnapshot`** at add time; `name` from `nameSnapshot`.
+
+### Response — 404 Not Found
+
+Unknown `productId`.
+
+### Authorization
+
+- Caller’s cart only.
+
+---
+
+## PATCH /api/cart/items/:itemId
+
+**Purpose:** Set line quantity; removes the line when `quantity` is `0`.
+
+### Request
+
+- Method: `PATCH`
+- Path: `/api/cart/items/:itemId`
+- Auth: **required**
+- Body: `{ "quantity": 2 }` — integer ≥ 0
+
+### Response — 200 OK
+
+Updated cart (same envelope as `GET /api/cart`).
+
+### Response — 404 Not Found
+
+Item does not exist or does not belong to the caller’s active cart.
+
+---
+
+## DELETE /api/cart/items/:itemId
+
+**Purpose:** Remove one line from the active cart.
+
+### Request
+
+- Method: `DELETE`
+- Path: `/api/cart/items/:itemId`
+- Auth: **required**
+
+### Response — 200 OK
+
+Updated cart.
+
+---
+
+## DELETE /api/cart
+
+**Purpose:** Clear all items from the active cart.
+
+### Request
+
+- Method: `DELETE`
+- Path: `/api/cart`
+- Auth: **required**
+
+### Response — 200 OK
+
+Cart with empty `items` (may retain `id` until abandoned in a future phase).
+
+---
+
 ## Cross-system flows
 
 ### End-to-end: Browser → Shell → API → Neon Auth → Postgres

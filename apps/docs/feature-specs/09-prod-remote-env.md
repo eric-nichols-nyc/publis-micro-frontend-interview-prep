@@ -2,11 +2,13 @@
 
 ## Status
 
-**Draft** — approve when preparing deploy / CI story.
+**Completed** — T1–T2 (2026-06-04).
 
 ## Goal
 
 Document and implement environment-specific remote URLs for shell builds and a local preview workflow that mirrors production federation loading.
+
+Interview note: [production-remote-urls.md](../notes/production-remote-urls.md).
 
 ## User story
 
@@ -14,11 +16,11 @@ As a deployer, I want the shell to load remotes from staging/production URLs via
 
 ## Requirements
 
-- [ ] `apps/shell/.env.example` documents `VITE_MFE_PRODUCTS_URL`, `VITE_MFE_CART_URL` (and checkout if **06** exists)
-- [ ] `vite.config.ts` reads env with sensible dev defaults (already partial — verify and document)
-- [ ] `apps/docs/architecture.md` section: deploy order (deploy remotes → deploy shell)
-- [ ] Script or README steps: `build` remotes → `preview` → `build` shell with env pointing at preview URLs
-- [ ] Optional: `turbo.json` task notes for CI matrix per app
+- [x] `apps/shell/.env.example` documents `VITE_MFE_PRODUCTS_URL`, `VITE_MFE_CART_URL` (and checkout if **06** exists)
+- [x] `vite.config.ts` reads env with sensible dev defaults (already partial — verify and document)
+- [x] `apps/docs/architecture.md` section: deploy order (deploy remotes → deploy shell)
+- [x] Script or README steps: `build` remotes → `preview` → `build` shell with env pointing at preview URLs
+- [x] Optional: `turbo.json` task notes for CI matrix per app
 
 ## Out of scope
 
@@ -33,9 +35,9 @@ As a deployer, I want the shell to load remotes from staging/production URLs via
 
 ## Acceptance criteria
 
-- [ ] Shell build with custom env URLs succeeds when preview URLs valid
-- [ ] README “Production remote URLs” matches implemented env names
-- [ ] Interview guide mentions CDN caching for `remoteEntry.js`
+- [x] Shell build with custom env URLs succeeds when preview URLs valid
+- [x] README “Production remote URLs” matches implemented env names
+- [x] Interview guide mentions CDN caching for `remoteEntry.js`
 
 ## Implementation tasks
 

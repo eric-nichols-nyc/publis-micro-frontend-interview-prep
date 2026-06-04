@@ -2,7 +2,7 @@
 
 ## Status
 
-**Draft** — do not implement until [phase-1-cross-mfe.md](./phase-1-cross-mfe.md) is **Completed**. Prerequisite [07-auth-e2e-gate.md](../07-auth-e2e-gate.md) — **passed**.
+**Completed** — implemented P2-T1 through P2-T5 (2026-06-04). Prerequisite [07-auth-e2e-gate.md](../07-auth-e2e-gate.md) — **passed**.
 
 ## Goal
 
@@ -28,32 +28,32 @@ As a signed-in shopper, I want my cart to survive a browser refresh and stay pri
 
 ### Database (`packages/database`)
 
-- [ ] `Cart` model — `id`, `userId` (FK to app `User`), `status`, timestamps
-- [ ] `CartItem` model — `id`, `cartId`, `productId`, `quantity`, `priceSnapshot`, `nameSnapshot` (optional), timestamps
-- [ ] Unique constraint: one active cart per user; unique `(cartId, productId)` per line
-- [ ] Migration + no seed required for empty carts
+- [x] `Cart` model — `id`, `userId` (FK to app `User`), `status`, timestamps
+- [x] `CartItem` model — `id`, `cartId`, `productId`, `quantity`, `priceSnapshot`, `nameSnapshot` (optional), timestamps
+- [x] Unique constraint: one active cart per user; unique `(cartId, productId)` per line
+- [x] Migration + no seed required for empty carts
 
 ### API (`apps/api`)
 
-- [ ] `GET /api/cart` — active cart + items (or empty cart shell)
-- [ ] `POST /api/cart/items` — body `{ productId, quantity? }`; merge duplicate product
-- [ ] `PATCH /api/cart/items/:itemId` — update quantity; remove at 0
-- [ ] `DELETE /api/cart/items/:itemId`
-- [ ] `DELETE /api/cart` — clear all items
-- [ ] Auth middleware; ownership checks (user cannot read/write another user’s cart)
-- [ ] Integration tests in `apps/api/tests/routes.test.ts`
+- [x] `GET /api/cart` — active cart + items (or empty cart shell)
+- [x] `POST /api/cart/items` — body `{ productId, quantity? }`; merge duplicate product
+- [x] `PATCH /api/cart/items/:itemId` — update quantity; remove at 0
+- [x] `DELETE /api/cart/items/:itemId`
+- [x] `DELETE /api/cart` — clear all items
+- [x] Auth middleware; ownership checks (user cannot read/write another user’s cart)
+- [x] Integration tests in `apps/api/tests/routes.test.ts`
 
 ### Shell
 
-- [ ] `cart-session` hydrates from `GET /api/cart` on session available
-- [ ] `addToCart` / qty / remove call API then refresh local lines (optimistic update optional, not required v1)
-- [ ] Map API DTO → `CartLine` for remotes (same shape as phase 1)
-- [ ] Loading/error states on cart routes
+- [x] `cart-session` hydrates from `GET /api/cart` on session available
+- [x] `addToCart` / qty / remove call API then refresh local lines (optimistic update optional, not required v1)
+- [x] Map API DTO → `CartLine` for remotes (same shape as phase 1)
+- [x] Loading/error states on cart routes
 
 ### Documentation
 
-- [ ] Extend [02-api-application/api-design.md](../02-api-application/api-design.md) with cart endpoints
-- [ ] Update [12-api-product-catalog.md](../12-api-product-catalog.md) out-of-scope note → “cart lines in DB (phase 2)”
+- [x] Extend [02-api-application/api-design.md](../02-api-application/api-design.md) with cart endpoints
+- [x] Update [12-api-product-catalog.md](../12-api-product-catalog.md) out-of-scope note → “cart lines in DB (phase 2)”
 
 ## Out of scope (phase 2 v1)
 

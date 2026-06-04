@@ -9,8 +9,8 @@
 | 05 | Cart (interactive) | [05-cart.md](./05-cart.md) | **Completed** | 02, 04 recommended |
 | 06 | Checkout remote (optional) | [06-checkout-remote.md](./06-checkout-remote.md) | Draft | 02 |
 | 07 | Shell auth (Neon + API) | [07-shell-auth.md](./07-shell-auth.md) · **[E2E gate](./07-auth-e2e-gate.md)** | **Completed** | 11 (API), Neon Auth project |
-| 08 | Cart flow (cross-MFE + persisted) | [08-cart-flow/overview.md](./08-cart-flow/overview.md) | **Phase 1 completed** · phase 2 draft | 04, 05, 07, 12 |
-| 09 | Production remote URLs | [09-prod-remote-env.md](./09-prod-remote-env.md) | Draft | 01 |
+| 08 | Cart flow (cross-MFE + persisted) | [08-cart-flow/overview.md](./08-cart-flow/overview.md) | **Completed** (phase 1 + 2) | 04, 05, 07, 12 |
+| 09 | Production remote URLs | [09-prod-remote-env.md](./09-prod-remote-env.md) | **Completed** | 01 |
 | 10 | E2E smoke tests | [10-e2e-smoke.md](./10-e2e-smoke.md) | Draft | 01 |
 | 11 | API application | [02-api-application/overview.md](./02-api-application/overview.md) | **In progress** | DB migrate, Neon Auth |
 | 12 | API product catalog | [12-api-product-catalog.md](./12-api-product-catalog.md) | **Completed** | 11 (API), 04, 07 (route gate) |
@@ -28,13 +28,13 @@ Stable spec **numbers** are IDs, not strict build order. Use this sequence to av
 
 | Phase | Specs | Notes |
 |-------|-------|-------|
-| **Done** | 01, 02, 04, 05, 07, 12, **08 phase 1** | Catalog API; auth gate; [cross-MFE cart](./08-cart-flow/phase-1-cross-mfe.md) |
-| **Next** | **08 phase 2** or **09**/**10** | Persisted cart API · or deploy/E2E hardening |
+| **Done** | 01, 02, 04, 05, 07, 09, 12, **08** | Catalog API; auth gate; prod remote URLs; [cart flow](./08-cart-flow/overview.md) |
+| **Next** | **10** | E2E smoke |
 | **In progress** | 11 | API app baseline (cart API in 08 phase 2) |
 | **Optional** | 03, 06 | Polish / third remote |
 | **Hardening** | 09 → 10 | Deploy URLs, E2E smoke |
 
-**08** — Phase 1 **Completed**. To start phase 2, approve [phase-2-persisted-api.md](./08-cart-flow/phase-2-persisted-api.md) and implement **P2-T1** only. See [auth-strategy.md](./02-api-application/auth-strategy.md).
+**08** — Phase 1 and phase 2 **Completed**. See [08-cart-flow/overview.md](./08-cart-flow/overview.md).
 
 ## Suggested implementation order (legacy list)
 

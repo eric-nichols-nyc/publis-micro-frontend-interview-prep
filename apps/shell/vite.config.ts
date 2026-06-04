@@ -7,6 +7,9 @@ import { federationShared } from "@repo/mfe-shared/federation-shared";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+// Remote entry URLs are resolved at shell build time (not runtime).
+// Set VITE_MFE_*_URL in the environment or copy apps/shell/.env.example.
+// See README “Production remote URLs” and spec 09-prod-remote-env.md.
 const productsRemoteEntry =
   process.env.VITE_MFE_PRODUCTS_URL ??
   "http://localhost:5174/remoteEntry.js";

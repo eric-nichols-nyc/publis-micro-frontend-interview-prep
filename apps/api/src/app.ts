@@ -2,6 +2,7 @@ import express, { type Express } from "express";
 import { corsMiddleware } from "./middleware/cors.js";
 import { errorHandler } from "./middleware/error-handler.js";
 import { authRouter } from "./routes/auth.js";
+import { cartRouter } from "./routes/cart.js";
 import { healthRouter } from "./routes/health.js";
 import { meRouter } from "./routes/me.js";
 import { productsRouter } from "./routes/products.js";
@@ -17,6 +18,7 @@ export const createApp = (): Express => {
   app.use("/api/auth", authRouter);
   app.use("/api/me", meRouter);
   app.use("/api/products", productsRouter);
+  app.use("/api/cart", cartRouter);
   app.use("/api/users", usersRouter);
 
   app.use(errorHandler);

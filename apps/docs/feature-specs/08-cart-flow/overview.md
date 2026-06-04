@@ -2,7 +2,7 @@
 
 ## Status
 
-**Phase 1 completed** — cross-MFE in-memory cart (T1–T5). **Phase 2** ([persisted API](./phase-2-persisted-api.md)) is **Draft** — approve separately before implementation.
+**Phase 1 completed** — cross-MFE in-memory cart (T1–T5). **Phase 2** ([persisted API](./phase-2-persisted-api.md)) **Completed** (P2-T1–P2-T5, 2026-06-04).
 
 ## Goal
 

@@ -11,15 +11,45 @@ const CartWidget = loadRemote(
 
 export function CartRoutePage() {
   const user = useUser();
-  const { lines, subtotal, updateQuantity, removeLine } = useCartSession();
+  const {
+    lines,
+    subtotal,
+    updateQuantity,
+    removeLine,
+    cartStatus,
+    cartErrorMessage,
+    reloadCart,
+  } = useCartSession();
+
+  if (cartStatus === "loading") {
+    return <p className="shell-loading">Loading cart…</p>;
+  }
+
+  if (cartStatus === "error") {
+    return (
+      <div className="remote-fallback" role="alert">
+        <h3>Could not load cart</h3>
+        <p>{cartErrorMessage}</p>
+        <button
+          className="remote-fallback__retry"
+          onClick={() => void reloadCart()}
+          type="button"
+        >
+          Retry
+        </button>
+      </div>
+    );
+  }
 
   return (
     <RemoteErrorBoundary label="Cart">
       <Suspense fallback={<p className="shell-loading">Loading cart…</p>}>
         <CartWidget
           lines={lines}
-          onRemoveLine={removeLine}
-          onUpdateQuantity={updateQuantity}
+          onRemoveLine={(lineId) => void removeLine(lineId)}
+          onUpdateQuantity={(lineId, quantity) =>
+            void updateQuantity(lineId, quantity)
+          }
           subtotal={subtotal}
           user={user}
         />

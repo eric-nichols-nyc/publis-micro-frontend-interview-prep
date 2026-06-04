@@ -74,8 +74,21 @@ Documented in [AGENTS.md](./AGENTS.md#code-conventions). Summary:
 
 - Plugin: `@module-federation/vite`
 - Dev remote entries: `http://localhost:5174/remoteEntry.js`, `http://localhost:5175/remoteEntry.js`
-- Prod: `VITE_MFE_PRODUCTS_URL`, `VITE_MFE_CART_URL` on shell build
+- Prod / staging: set `VITE_MFE_PRODUCTS_URL`, `VITE_MFE_CART_URL` when **building** the shell (`apps/shell/.env.example`)
 - Shared: `react`, `react-dom` as **singletons** via `federationShared`
+
+### Deploy order (production)
+
+```txt
+1. Build + deploy mfe-products  →  CDN serves …/remoteEntry.js + chunks
+2. Build + deploy mfe-cart     →  CDN serves …/remoteEntry.js + chunks
+3. Build shell with VITE_MFE_*_URL pointing at those remoteEntry URLs
+4. Deploy shell (host)
+```
+
+The shell does not bundle remote UI; it fetches `remoteEntry.js` at runtime from the URLs baked in at step 3. Deploy remotes before the shell so entry URLs exist when the host goes live.
+
+Local mirror of this flow: [README.md](../../README.md) — “Production remote URLs”. Spec: [feature-specs/09-prod-remote-env.md](./feature-specs/09-prod-remote-env.md).
 
 ## Cross-MFE cart (spec **08**)
 
