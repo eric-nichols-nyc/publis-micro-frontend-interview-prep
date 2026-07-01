@@ -16,7 +16,7 @@
     "clean": "git clean -xdf node_modules"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.6",
+    "@biomejs/biome": "2.5.1",
     "@repo/typescript-config": "workspace:*",
     "@types/node": "^25.3.5",
     "turbo": "^2.8.14",
